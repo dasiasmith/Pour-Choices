@@ -19,18 +19,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  thoughts: [ // Created recipes
+  savedRecipes: [ 
     {
       type: Schema.Types.ObjectId,
-      ref: 'Thought',
+      ref: 'savedRecipe',
     },
   ],
-  // savedRecipes: [ 
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: 'savedRecipe',
-  //   },
-  // ],
 });
 
 userSchema.pre('save', async function (next) {
