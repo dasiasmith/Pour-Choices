@@ -982,8 +982,8 @@ a:hover {
   border-radius: 0.3rem;
   border: 1px solid transparent;
   outline: none;
-  color: #1a1a1a;
-  background-color: #aeaeae;
+  color: #ffffff;
+  background-color: #aeaeae00;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
@@ -1084,14 +1084,14 @@ a:hover {
 }
 
 .card {
-  border: 1px solid #1a1a1a;
+  border: 1px solid #ffffff;
   margin-bottom: 1rem;
 }
 
 .card .card-header {
   padding: 0.375rem;
-  background-color: #2d3e50;
-  color: #d9e9e8;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .card .card-body {
@@ -1149,7 +1149,7 @@ form .form-input {
   background-color: #ffffff;
   margin: 0.625rem 0;
   font-size: 1.2rem;
-  border: 1px solid #484848;
+  border: 1px solid #ffffff;
   border-radius: 0.3rem;
 }
 
