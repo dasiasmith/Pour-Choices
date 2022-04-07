@@ -7,7 +7,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import loginBar from "./assets/loginBar.jpeg";
 import Home from "./pages/Home";
 import Homebar from "./pages/Homebar";
 import OutsideBar from "./pages/Outsidebar";
@@ -44,8 +44,15 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
+        <div
+          className="flex-column justify-flex-start min-100-vh"
+          style={{ backgroundImage: `url(${loginBar})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          width: '100vw',
+          height: '100vh' }}>
+          {/* <Header /> */}
           <div className="container">
             <Routes>
               <Route path="/" element={<Home />} />
