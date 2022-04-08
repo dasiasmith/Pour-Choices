@@ -1,14 +1,14 @@
 import React from "react";
 
-import homeBar from "../assets/homeBar.png";
+import awayBar from "../assets/awayBar.jpeg";
 import { useQuery } from "@apollo/client";
 
-const Homebar = () => {
+const Awaybar = () => {
   return (
     <div
       className="flex-column justify-flex-start"
       style={{
-        backgroundImage: `url(${homeBar})`,
+        backgroundImage: `url(${awayBar})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -32,4 +32,4 @@ const Homebar = () => {
   );
 };
 
-export default Homebar;
+export default Awaybar;
