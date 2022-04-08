@@ -46,12 +46,15 @@ function App() {
       <Router>
         <div
           className="flex-column justify-flex-start min-100-vh"
-          style={{ backgroundImage: `url(${loginBar})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          width: '100vw',
-          height: '100vh' }}>
+          style={{
+            backgroundImage: `url(${loginBar})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            width: "100vw",
+            height: "100vh",
+          }}
+        >
           {/* <Header /> */}
           <div className="container">
             <Routes>
@@ -60,7 +63,8 @@ function App() {
               <Route path="/outsidebar" element={<OutsideBar />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/me" element={<Profile />} />
+              {/* <Route path="/profile" element={<Profile />} /> */}
               <Route path="/profiles/:username" element={<Profile />} />
             </Routes>
           </div>
