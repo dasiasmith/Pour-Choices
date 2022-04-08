@@ -9,11 +9,11 @@ const recipeSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
-  // recipeAuthor: {
-  //   type: String,
-  //   required: true,
-  //   trim: true,
-  // },
+  recipeAuthor: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   ingredients: {
     type: String,
     required: "You need to create a ingredients!",

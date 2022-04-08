@@ -41,17 +41,17 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
    recipes(username: String): [Recipe]
-    // thought(thoughtId: ID!): Thought
+    recipe(recipeId: ID!): Recipe
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    addRecipe(recipeName: String!, ingredients: String!, instructions: String!): Recipe
+    // addComment(thoughtId: ID!, commentText: String!): Thought
+    removeRecipe(recipeId: ID!): Recipe
+    // removeComment(thoughtId: ID!, commentId: ID!): Thought
   }
 `;
 
