@@ -1,9 +1,8 @@
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
-
+import profileBar from "../assets/profileBar.png";
 import Auth from "../utils/auth";
 
 const Profile = () => {
@@ -25,21 +24,34 @@ const Profile = () => {
 
   if (!user?.username) {
     return (
-      <main className="flex-row justify-center align-center mb-4 min-100-vh">
-        <div className="col-12 col-lg-6">
-          <div className="card">
-            <h4 className="card-header p-2 text-center"></h4>
-            <div className="card-body text-light text-center">
-              <h4>
-                You need to be logged in to see this!
-                <br>
-                </br>
-                Sign up or log in!
-              </h4>
+      <div
+        className="flex-column justify-flex-start"
+        style={{
+          backgroundImage: `url(${profileBar})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          width: "100vw",
+          height: "100vh",
+        }}
+      >
+        <main className="flex-row justify-center align-center min-100-vh">
+          <div className="col-12 col-lg-4">
+            <div className="card-error">
+              <div className="card-body text-light text-center">
+                <h4>
+                  You need to be logged in to see this!
+                  <br></br>
+                  <a Link to="/signup">
+                    Sign up
+                  </a>{" "}
+                  or <a href="">log in</a>!
+                </h4>
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     );
   }
 

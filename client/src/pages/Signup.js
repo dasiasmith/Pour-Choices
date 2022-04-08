@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-
+import loginBar from "../assets/loginBar.jpeg";
 import Auth from '../utils/auth';
 
 const Signup = () => {
@@ -39,10 +39,21 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center align-center mb-4 min-100-vh">
-      <div className="col-12 col-lg-6">
+    <div
+    className="flex-column justify-flex-start"
+    style={{
+      backgroundImage: `url(${loginBar})`,
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      width: "100vw",
+      height: "100vh",
+    }}
+  >
+    <main className="flex-row justify-center align-center min-100-vh">
+      <div className="col-12 col-lg-4">
         <div className="card">
-          <h4 className="card-header p-2 text-center">Sign Up</h4>
+          <h1 className="card-header text-dark text-center">Sign Up</h1>
           <div className="card-body">
             {data ? (
               <p>
@@ -53,7 +64,7 @@ const Signup = () => {
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
-                  placeholder="Your username"
+                  placeholder="Username"
                   name="username"
                   type="text"
                   value={formState.name}
@@ -61,7 +72,7 @@ const Signup = () => {
                 />
                 <input
                   className="form-input"
-                  placeholder="Your email"
+                  placeholder="Email"
                   name="email"
                   type="email"
                   value={formState.email}
@@ -94,6 +105,7 @@ const Signup = () => {
         </div>
       </div>
     </main>
+  </div>
   );
 };
 
