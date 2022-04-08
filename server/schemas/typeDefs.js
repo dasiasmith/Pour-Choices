@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
@@ -6,23 +6,31 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    thoughts: [Thought]!
+    recipes: [Recipe]!
   }
 
-  type Thought {
+  type Recipe {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
+    recipeName: String
+    ingredients: String
+    instructions: String
     createdAt: String
-    comments: [Comment]!
+    
   }
+  // type Thought {
+  //   _id: ID
+  //   thoughtText: String
+  //   thoughtAuthor: String
+  //   createdAt: String
+  //   comments: [Comment]!
+  // }
 
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
-  }
+  // type Comment {
+  //   _id: ID
+  //   commentText: String
+  //   commentAuthor: String
+  //   createdAt: String
+  // }
 
   type Auth {
     token: ID!
@@ -32,8 +40,8 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
+   recipes(username: String): [Recipe]
+    // thought(thoughtId: ID!): Thought
     me: User
   }
 
