@@ -1,7 +1,7 @@
 const db = require("../config/connection");
 const { User, Recipe } = require("../models");
 const userSeeds = require("./userSeeds.json");
-const recipeSeeds = require("./thoughtSeeds.json");
+const recipeSeeds = require("./recipeSeeds.json");
 
 db.once("open", async () => {
   try {
@@ -11,12 +11,12 @@ db.once("open", async () => {
     await User.create(userSeeds);
 
     for (let i = 0; i < recipeSeeds.length; i++) {
-      const { _id, thoughtAuthor } = await Recipe.create(recipeSeeds[i]);
+      const { _id, recipeAuthor } = await Recipe.create(recipeSeeds[i]);
       const user = await User.findOneAndUpdate(
-        { username: thoughtAuthor },
+        { username: recipeAuthor },
         {
           $addToSet: {
-            thoughts: _id,
+            recipes: _id,
           },
         }
       );
