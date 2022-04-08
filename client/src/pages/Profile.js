@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
@@ -32,9 +33,9 @@ const Profile = () => {
             <div className="card-body text-light text-center">
               <h4>
                 You need to be logged in to see this!
-                <br>
-                </br>
-                Sign up or log in!
+                <br></br>
+                <Link to="/signup">Sign up</Link> or{" "}
+                <Link to="/login">log in!</Link>
               </h4>
             </div>
           </div>

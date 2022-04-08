@@ -5,21 +5,24 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("recipes");
+      return await User.find().populate("recipes");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("recipes");
+      return await User.findOne({ username }).populate("recipes");
     },
+    // ??? no username is ok
     recipes: async (parent, { username }) => {
       const params = username ? { username } : {};
       return await Recipe.find(params).sort({ createdAt: -1 });
     },
     recipe: async (parent, { recipeId }) => {
-      return Recipe.findOne({ _id: recipeId });
+      return await Recipe.findOne({ _id: recipeId });
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("recipes");
+        return await User.findOne({ _id: context.user._id }).populate(
+          "recipes"
+        );
       }
       throw new AuthenticationError("You need to be logged in!");
     },
