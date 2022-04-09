@@ -9,6 +9,12 @@ const recipeSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
+  //   recipeAuthor: {
+
+  //     type: Schema.Types.ObjectId,
+  //     ref: "User",
+
+  // },
   recipeAuthor: {
     type: String,
     required: true,

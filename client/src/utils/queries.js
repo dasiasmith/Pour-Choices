@@ -31,7 +31,7 @@ export const QUERY_RECIPES = gql`
 `;
 
 export const QUERY_SINGLE_RECIPE = gql`
-  query getSingleRecipe( $recipeId: ID!) {
+  query getSingleRecipe($recipeId: ID!) {
     recipe(recipeId: $recipeId) {
       _id
       recipeName
@@ -39,7 +39,6 @@ export const QUERY_SINGLE_RECIPE = gql`
       instructions
       recipeAuthor
       createdAt
-    }
     }
   }
 `;

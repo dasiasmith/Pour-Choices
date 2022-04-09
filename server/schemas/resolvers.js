@@ -12,7 +12,7 @@ const resolvers = {
     },
     // ??? no username is ok
     recipes: async (parent, { username }) => {
-      const params = username ? { username } : {};
+      const params = username ? { recipeAuthor: username } : {};
       return await Recipe.find(params).sort({ createdAt: -1 });
     },
     recipe: async (parent, { recipeId }) => {

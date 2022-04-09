@@ -24,7 +24,7 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_THOUGHT = gql`
+export const ADD_RECIPE = gql`
   mutation addRecipe(
     $recipeName: String!
     $ingredients: String!
