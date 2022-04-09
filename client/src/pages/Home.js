@@ -21,8 +21,8 @@ const Home = () => {
             </Link>
           </li>
           <li className="flex-row">
-            <Link to="/outsidebar">
-              Outsidebar
+            <Link to="/awaybar">
+              Awaybar
             </Link>
             </li>
             <li className="flex-row">

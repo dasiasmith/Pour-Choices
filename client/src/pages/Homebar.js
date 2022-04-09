@@ -1,6 +1,6 @@
 import React from "react";
 
-import homeBar from "../assets/homeBar.png";
+import homeBar from "../assets/homebar.png";
 import { useQuery } from "@apollo/client";
 
 const Homebar = () => {
