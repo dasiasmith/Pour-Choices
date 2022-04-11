@@ -106,6 +106,19 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    updateRecipe: async (
+      parent,
+      { recipeId, recipeName, ingredients, instructions }
+    ) => {
+      return await Recipe.findOneAndUpdate(
+        { _id: recipeId },
+        { recipeName },
+        { ingredients },
+        { instructions },
+        { new: true }
+      );
+    },
+
     // removeComment: async (parent, { thoughtId, commentId }, context) => {
     //   if (context.user) {
     //     return Thought.findOneAndUpdate(
