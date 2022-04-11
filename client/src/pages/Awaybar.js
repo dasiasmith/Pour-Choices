@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { React, Autocomplete } from "react";
 
 import awayBar from "../assets/awayBar.jpeg";
 import Auto from "../components/AwayBar";
