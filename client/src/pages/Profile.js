@@ -17,6 +17,7 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
+  console.log("user data---->", user);
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
@@ -54,8 +55,8 @@ const Profile = () => {
         </h2>
         <div className="col-12 col-md-10 mb-5">
           <RecipeList
-            thoughts={user.thoughts}
-            title={`${user.username}'s thoughts...`}
+            recipes={user.recipes}
+            title={`${user.username}'s recipes...`}
             showTitle={false}
             showUsername={false}
           />
