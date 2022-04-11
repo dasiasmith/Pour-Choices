@@ -1,7 +1,7 @@
 import React from "react";
-
+import  Autocomplete  from '../components/Homebar/Autocomplete';
 import homeBar from "../assets/homebar.png";
-import { useQuery } from "@apollo/client";
+// import { useQuery } from "@apollo/client";
 
 const Homebar = () => {
   return (
@@ -18,15 +18,11 @@ const Homebar = () => {
     >
       <main className="flex-row align-center min-100-vh">
         <header className="text-light">
-          PourChoices
-        </header>
-        <div className="col-12 col-lg-12">
-          <div className="card">
-            <div className="card-body text-light">
-              <p>wordy words</p>
-            </div>
-          </div>
-        </div>
+          Select your ingredients
+        </header> <br></br>
+        <div className="center">
+      <Autocomplete />
+      </div>
       </main>
     </div>
   );
