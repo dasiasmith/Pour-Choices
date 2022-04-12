@@ -10,6 +10,10 @@ import RecipeList from "../components/RecipeList";
 import Auth from "../utils/auth";
 
 const Profile = () => {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -68,7 +72,33 @@ const Profile = () => {
         height: "100vh",
       }}
     >
-      <Link to="/">Homepage</Link>
+      <div>
+        <Link className="text-light" to="/">
+          <h3 className="m-0">Homepage</h3>
+        </Link>
+      </div>
+      <div>
+        {Auth.loggedIn() ? (
+          <>
+            <Link className="btn btn-sm btn-info  m-2" to="/me">
+              {Auth.getProfile().data.username}'s profile
+            </Link>
+            <button className="btn btn-sm btn-light m-2" onClick={logout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link className="btn btn-lg btn-info m-2" to="/login">
+              Login
+            </Link>
+            <Link className="btn btn-lg btn-light m-2" to="/signup">
+              Signup
+            </Link>
+          </>
+        )}
+      </div>
+      {/* <Link to="/">Homepage</Link> */}
       <div className="flex-container">
         <div className="flex-row  flex-child justify-center mb-3">
           <h2 className="col-12 col-md-10  text-dark p-3 mb-5">
