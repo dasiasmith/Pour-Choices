@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import logo from '../assets/PCLogo.png';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import loginBar from "../assets/loginBar.jpeg";
@@ -50,7 +50,12 @@ const Signup = () => {
       height: "100vh",
     }}
   >
-    <main className="flex-row justify-center align-center min-100-vh">
+    <main className="flex-column justify-center align-center min-100-vh">
+    <header className="text-light mb-5 p-5"><img src={logo} />
+        <div className="container flex-row justify-space-between-lg justify-center align-center">
+          <nav><h5>Login</h5></nav><nav><h5>Logout</h5></nav>
+        </div>
+      </header>
       <div className="col-12 col-lg-4">
         <div className="card">
           <h1 className="card-header text-dark text-center">Sign Up</h1>

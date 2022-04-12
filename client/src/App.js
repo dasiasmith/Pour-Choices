@@ -13,6 +13,7 @@ import AwayBar from "./pages/Awaybar";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import Navi from "./pages/Navi";
 import Header from "./components/Header";
 
 // Construct our main GraphQL API endpoint
@@ -47,6 +48,7 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/navi" element={<Navi />} />
               <Route path="/homebar" element={<Homebar />} />
               <Route path="/awaybar" element={<AwayBar />} />
               <Route path="/login" element={<Login />} />
