@@ -7,7 +7,7 @@ import { QUERY_RECIPES, QUERY_ME } from "../../utils/queries";
 import RecipeEditForm from "../RecipeEditForm";
 
 const CardBody = ({ recipe, handleEditButton, handleDeleteRecipe }) => (
-  <div className="card-body bg-light p-2">
+  <div className="card-body  p-2">
     <p>{recipe.recipeName}</p>
     <p>ingredients: {recipe.ingredients}</p>
     <p>instructions: {recipe.instructions}</p>
@@ -82,7 +82,7 @@ const RecipeList = ({
       {recipes &&
         recipes.map((recipe) => (
           <div key={recipe._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+            <h4 className="card-header  text-dark p-2 m-0">
               {showUsername ? (
                 <Link
                   className="text-light"

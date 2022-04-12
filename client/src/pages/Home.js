@@ -15,7 +15,7 @@ const Home = () => {
         <Link to="/homebar">Homebar</Link>
       </li>
       <li className="flex-row">
-        <Link to="/outsidebar">Outsidebar</Link>
+        <Link to="/awaybar">Awaybar</Link>
       </li>
       <li className="flex-row">
         <Link to="/me">profile</Link>

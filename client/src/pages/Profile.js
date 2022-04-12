@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import { QUERY_USER, QUERY_ME, QUERY_RECIPES } from "../utils/queries";
-
+import profileBar from "../assets/profileBar.png";
 import RecipeForm from "../components/RecipeForm";
 import RecipeList from "../components/RecipeList";
 import Auth from "../utils/auth";
@@ -28,37 +28,62 @@ const Profile = () => {
 
   if (!user?.username) {
     return (
-      <main className="flex-row justify-center align-center mb-4 min-100-vh">
-        <div className="col-12 col-lg-6">
-          <div className="card">
-            <h4 className="card-header p-2 text-center"></h4>
-            <div className="card-body text-light text-center">
-              <h4>
-                You need to be logged in to see this!
-                <br></br>
-                <Link to="/signup">Sign up</Link> or{" "}
-                <Link to="/login">log in!</Link>
-              </h4>
+      <div
+        className="flex-column justify-flex-start"
+        style={{
+          backgroundImage: `url(${profileBar})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          width: "100vw",
+          height: "100vh",
+        }}
+      >
+        <main className="flex-row justify-center align-center min-100-vh">
+          <div className="col-12 col-lg-4">
+            <div className="card-error">
+              <div className="card-body text-light text-center">
+                <h4>
+                  You need to be logged in to see this!
+                  <br></br>
+                  <Link to="/signup">Sign up</Link> or{" "}
+                  <Link to="/login">log in!</Link>
+                </h4>
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     );
   }
   return (
-    <div>
-      <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          Viewing {userParam ? `${user.username}'s` : "your"} profile.
-        </h2>
-        <div className="col-12 col-md-10 mb-5">
-          <RecipeList
-            recipes={user.recipes}
-            title={`${user.username}'s recipes...`}
-            showTitle={false}
-            showUsername={false}
-          />
+    <div
+      className="flex-column justify-flex-start"
+      style={{
+        backgroundImage: `url(${profileBar})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        width: "100vw",
+        height: "100vh",
+      }}
+    >
+      <Link to="/">Homepage</Link>
+      <div className="flex-container">
+        <div className="flex-row  flex-child justify-center mb-3">
+          <h2 className="col-12 col-md-10  text-dark p-3 mb-5">
+            Viewing {userParam ? `${user.username}'s` : "your"} recipes.
+          </h2>
+          <div className="col-12 col-md-10 mb-5">
+            <RecipeList
+              recipes={user.recipes}
+              title={`${user.username}'s recipes...`}
+              showTitle={false}
+              showUsername={false}
+            />
+          </div>
         </div>
+
         {/* <div className="profile col-md-10">
           <p>&#128516;</p>
           <div class="card-body">
@@ -75,8 +100,8 @@ const Profile = () => {
         )} */}
         {!userParam && (
           <div
-            className="col-12 col-md-10 mb-3 p-3"
-            style={{ border: "1px dotted #1a1a1a" }}
+            className="flex-child col-12 col-md-10 mb-3 p-3"
+            // style={{ border: "1px dotted #1a1a1a" }}
           >
             <RecipeForm />
           </div>

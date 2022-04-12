@@ -66,7 +66,7 @@ const RecipeForm = () => {
   };
   return (
     <div>
-      <h3>What's on your mind?</h3>
+      <h3>Create your own recipe?</h3>
 
       {Auth.loggedIn() ? (
         <>
@@ -74,48 +74,53 @@ const RecipeForm = () => {
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
           >
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="recipeName"
-                placeholder="Here is the name of recipe"
-                value={recipeName}
-                className="form-input w-100"
-                style={{ lineHeight: "1.5", resize: "vertical" }}
-                onChange={handleInputChange}
-              ></textarea>
-              <textarea
-                name="ingredients"
-                placeholder="Here is the ingredients"
-                value={ingredients}
-                className="form-input w-100"
-                style={{ lineHeight: "1.5", resize: "vertical" }}
-                onChange={handleInputChange}
-              ></textarea>
-              <textarea
-                name="instructions"
-                placeholder="Here is the instructions"
-                value={instructions}
-                className="form-input w-100"
-                style={{ lineHeight: "1.5", resize: "vertical" }}
-                onChange={handleInputChange}
-              ></textarea>
-            </div>
-
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Recipe
-              </button>
-            </div>
-            {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
-                {error.message}
+            <div>
+              <div className="col-12 col-lg-9">
+                <textarea
+                  name="recipeName"
+                  placeholder="Here is the name of recipe"
+                  value={recipeName}
+                  className="form-input w-100"
+                  style={{ lineHeight: "1.5", resize: "vertical" }}
+                  onChange={handleInputChange}
+                ></textarea>
+                <textarea
+                  name="ingredients"
+                  placeholder="Here is the ingredients"
+                  value={ingredients}
+                  className="form-input w-100"
+                  style={{ lineHeight: "1.5", resize: "vertical" }}
+                  onChange={handleInputChange}
+                ></textarea>
+                <textarea
+                  name="instructions"
+                  placeholder="Here is the instructions"
+                  value={instructions}
+                  className="form-input w-100"
+                  style={{ lineHeight: "1.5", resize: "vertical" }}
+                  onChange={handleInputChange}
+                ></textarea>
               </div>
-            )}
+
+              <div className="col-12 col-lg-3">
+                <button
+                  className="btn btn-primary btn-block py-3"
+                  type="submit"
+                >
+                  Add Recipe
+                </button>
+              </div>
+              {error && (
+                <div className="col-12 my-3 bg-danger text-white p-3">
+                  {error.message}
+                </div>
+              )}
+            </div>
           </form>
         </>
       ) : (
         <p>
-          You need to be logged in to share your thoughts. Please{" "}
+          You need to be logged in to create your recipe. Please{" "}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
