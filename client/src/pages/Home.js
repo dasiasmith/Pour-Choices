@@ -1,27 +1,161 @@
-import React from "react";
+
+import React, { useState } from "react";
+
 import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/mutations";
+import loginBar from "../assets/loginBar.jpeg";
+import Auth from "../utils/auth";
+import logo from "../assets/PCLogo.png";
 
-//We should add an if statement, if user is logged in then render option for
-//home or outside bar. If user is not logged in then redirect to login page
+const Home = (props) => {
+  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [login, { error, data }] = useMutation(LOGIN_USER);
 
-const Home = () => {
-  return (
-    <main>
-      <div className="flex-row justify-center">
-        This is the home page where we'll render the options for home or bar
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: "",
+      password: "",
+    });
+  };
+
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
+
+  if (!user?.username) {
+    return (
+      <div
+        className="flex-column justify-flex-start"
+        style={{
+          backgroundImage: `url(${loginBar})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          width: "100vw",
+          height: "100vh",
+        }}
+      >
+        <main className="flex-row justify-center align-center min-100-vh">
+          <div className="col-12 col-lg-4">
+            <div className="card-error">
+              <div className="card-body text-light text-center">
+                <h4>
+                  You need to be logged in to see this!
+                  <br></br>
+                  <a Link to="/signup">
+                    Sign up
+                  </a>{" "}
+                  or <a href="">log in</a>!
+                </h4>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
-      <li className="flex-row">
-        <Link to="/homebar">Homebar</Link>
-      </li>
-      <li className="flex-row">
-        <Link to="/awaybar">Awaybar</Link>
-      </li>
-      <li className="flex-row">
-        <Link to="/me">profile</Link>
-      </li>
-    </main>
-  );
+    );
+  }
+
+    return (
+      <div
+        className="flex-column justify-flex-start"
+        style={{
+          backgroundImage: `url(${loginBar})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          width: "100vw",
+          height: "100vh",
+        }}
+      >
+        <header className="text-light flex-column align-center mb-5 p-5">
+          <div className="flex-row justify-center">
+            <img src={logo} />
+          </div>
+          {Auth.loggedIn() ? (
+            <div className="flex-row justify-space-between-lg justify-center align-center">
+              <Link className="m-2 mx-5 decoration-none text-light" to="/me">
+                <h5>{Auth.getProfile().data.username}'s profile</h5>
+              </Link>
+              <h5
+                className="mx-5 decoration-none text-light"
+                style={{ cursor: "pointer" }}
+                onClick={logout}
+              >
+                Logout
+              </h5>
+            </div>
+          ) : (
+            <div className="flex-row">
+              <Link className="m-2 decoration-none text-light" to="/login">
+                <h5>Login</h5>
+              </Link>
+              <Link className=" m-2 decoration-none text-light" to="/signup">
+                <h5>Signup</h5>
+              </Link>
+            </div>
+          )}
+        </header>
+        <main className="flex-column justify-center align-center text-light m-5">
+          <h1>Where are you?</h1>
+          <div className="col-5 text-light ">
+            <div className="card float-left w-40">
+              <div className="card-body">
+                <form onSubmit={handleFormSubmit}>
+                  <button
+                    className="btn btn-block"
+                    style={{ cursor: "pointer" }}
+                    type="submit"
+                    href={"/Homebar"}
+                  >
+                    Home
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div className="card float-right w-40">
+              <div className="card-body">
+                <form onSubmit={handleFormSubmit}>
+                  <button
+                    className="btn btn-block"
+                    style={{ cursor: "pointer" }}
+                    type="submit"
+                  >
+                    Away
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
 };
 
 export default Home;
