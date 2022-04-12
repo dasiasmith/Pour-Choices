@@ -74,7 +74,7 @@ const RecipeForm = () => {
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
           >
-            <div>
+            <div style={{ width: "100%" }}>
               <div className="col-12 col-lg-9">
                 <textarea
                   name="recipeName"
