@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { useQuery } from "@apollo/client";
 
-import {
-  ADD_RECIPE,
-  REMOVE_RECIPE,
-  UPDATE_RECIPE,
-} from "../../utils/mutations";
+import { ADD_RECIPE } from "../../utils/mutations";
 import { QUERY_RECIPES, QUERY_ME } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
@@ -44,7 +39,7 @@ const RecipeForm = () => {
           recipeName,
           ingredients,
           instructions,
-          recipeAuthor: Auth.getProfile.data.username,
+          recipeAuthor: Auth.getProfile().data.username,
         },
       });
       setRecipeName("");

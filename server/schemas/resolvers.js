@@ -108,17 +108,32 @@ const resolvers = {
     },
     updateRecipe: async (
       parent,
-      { recipeId, recipeName, ingredients, instructions }
+      { recipeName, ingredients, instructions },
+      context
     ) => {
-      return await Recipe.findOneAndUpdate(
-        { _id: recipeId },
-        { recipeName },
-        { ingredients },
-        { instructions },
-        { new: true }
+      return await Recipe.findByIdAndUpdate(
+        { _id: context.body.variables.recipedId },
+        {
+          recipeName,
+          ingredients,
+          instructions,
+        }
       );
     },
-
+    // updateRecipe: async (
+    //   parent,
+    //   { recipeId, recipeName, ingredients, instructions },
+    //   context
+    // ) => {
+    //   console.log("context--------------->: ", context);
+    //   return await Recipe.findOneAndUpdate(
+    //     { _id: recipeId },
+    //     { recipeName },
+    //     { ingredients },
+    //     { instructions },
+    //     { new: true }
+    //   );
+    // },
     // removeComment: async (parent, { thoughtId, commentId }, context) => {
     //   if (context.user) {
     //     return Thought.findOneAndUpdate(
