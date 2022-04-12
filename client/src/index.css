@@ -431,7 +431,7 @@ button {
 }
 
 a {
-  color: #1b89bc;
+  color: #1c2225;
   text-decoration: none;
 }
 
@@ -457,7 +457,7 @@ a:hover {
   width: 50%;
 }
 
-.w-40{
+.w-40 {
   width: 40%;
 }
 .w-25 {
@@ -998,7 +998,7 @@ a:hover {
   margin: 0;
   text-decoration: none;
   font-family: "Bebas Neue", cursive;
-  font-size: 1.5rem;
+  font-size: 1rem;
   border-radius: 0.3rem;
   border: 2px solid transparent;
   outline: none;
@@ -1722,3 +1722,26 @@ label form [type="radio"] {
     align-content: center;
   }
 }
+.profile {
+  border-style: dotted;
+  border-radius: 25px;
+  background-color: white;
+}
+.user-recipe {
+  border-style: dotted;
+  border-radius: 25px;
+  background-color: white;
+}
+.flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+  border: 2px solid yellow;
+  margin: 20px;
+}
+
+/* .flex-child:first-child {
+  margin-right: 20px;
+} */

@@ -10,6 +10,9 @@ import logo from "../assets/PCLogo.png";
 import "./homebar.css";
 import Auth from "../utils/auth";
 import "../App";
+import  Autocomplete  from '../components/Homebar/Autocomplete';
+import homeBar from "../assets/homebar.png";
+// import { useQuery } from "@apollo/client";
 
 const Homebar = () => {
   const logout = (event) => {
@@ -27,6 +30,7 @@ const Homebar = () => {
         width: "100vw",
       }}
     >
+
       <main className="flex-column justify-center align-center">
         <header className="text-light flex-column align-center mb-5 p-5">
           <div className="flex-row justify-center">
@@ -173,9 +177,16 @@ const Homebar = () => {
           </HTMLFlipBook>
         </div>
         {/* </div> */}
+
+      <main className="flex-row align-center min-100-vh">
+        <header className="text-light">
+          Select your ingredients
+        </header> <br></br>
+        <div className="center">
+      <Autocomplete />
+      </div>
       </main>
-    </div>
-  );
+    </div>  );
 };
 
 export default Homebar;
