@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import { QUERY_USER, QUERY_ME, QUERY_RECIPES } from "../utils/queries";
 import profileBar from "../assets/profileBar.png";
 import RecipeForm from "../components/RecipeForm";
@@ -10,10 +10,11 @@ import RecipeList from "../components/RecipeList";
 import Auth from "../utils/auth";
 
 const Profile = () => {
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  };
+  const navigate = useNavigate();
+  // const logout = (event) => {
+  //   event.preventDefault();
+  //   Auth.logout();
+  // };
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -83,7 +84,13 @@ const Profile = () => {
             <Link className="btn btn-sm btn-info  m-2" to="/me">
               {Auth.getProfile().data.username}'s profile
             </Link>
-            <button className="btn btn-sm btn-light m-2" onClick={logout}>
+            <button
+              className="btn btn-sm btn-light m-2"
+              onClick={() => {
+                navigate("/");
+                Auth.logout();
+              }}
+            >
               Logout
             </button>
           </>
