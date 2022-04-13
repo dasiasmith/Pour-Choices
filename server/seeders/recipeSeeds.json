@@ -1,0 +1,21 @@
+[
+  {
+    "recipeName": "Negroni",
+    "ingredients": "1oz of gin, 1 oz of campari, 1 0z of sweet vermouth, cubed ice, orange peel for garnish",
+    "instructions": "1, Add all ingredients into a cocktail sahker. 2, Mix or shake until combined and chilled. 3, Strian and pour over fresh ice. 4, Garnish with an orange peel.",
+    "recipeAuthor": "Brian Kernighan"
+  },
+
+  {
+    "recipeName": "Negroni test",
+    "ingredients": "1oz of gin, 1 oz of campari, 1 0z of sweet vermouth, cubed ice, orange peel for garnish",
+    "instructions": "1, Add all ingredients into a cocktail sahker. 2, Mix or shake until combined and chilled. 3, Strian and pour over fresh ice. 4, Garnish with an orange peel.",
+    "recipeAuthor": "Brian Kernighan"
+  },
+  {
+    "recipeName": "Negroni 3",
+    "ingredients": "1oz of gin, 1 oz of campari, 1 0z of sweet vermouth, cubed ice, orange peel for garnish",
+    "instructions": "1, Add all ingredients into a cocktail sahker. 2, Mix or shake until combined and chilled. 3, Strian and pour over fresh ice. 4, Garnish with an orange peel.",
+    "recipeAuthor": "Max Kanat-Alexander"
+  }
+]

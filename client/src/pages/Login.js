@@ -70,13 +70,13 @@ const Login = (props) => {
                 style={{ cursor: "pointer" }}
                 onClick={logout}
               >
-                Logout
+                Log out
               </h5>
             </div>
           ) : (
             <div className="flex-row">
               <Link className="m-2 decoration-none text-light" to="/signup">
-                <h5>Signup</h5>
+                <h5>Sign up</h5>
               </Link>
             </div>
           )}

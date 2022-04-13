@@ -5,6 +5,11 @@
   "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.5.8",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.6.0",
+    "@mui/material": "^5.6.0",
+    "@mui/styled-engine-sc": "^5.5.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -15,6 +20,7 @@
     "react-pageflip": "^2.0.3",
     "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.1",
+    "styled-components": "^5.3.5",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

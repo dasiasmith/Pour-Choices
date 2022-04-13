@@ -50,14 +50,14 @@ const Signup = () => {
       height: "100vh",
     }}
   >
-    <main className="flex-column justify-center align-center min-100-vh">
+    <main className="flex-column justify-center align-center">
     <header className="text-light flex-column align-center mb-5 p-5">
         <div className="flex-row justify-center">
         <img src={logo}/>
         </div>
           <div className="flex-row">
             <Link className="m-2 decoration-none text-light" to="/login">
-              <h5>Login</h5>
+              <h5>Log in</h5>
             </Link>
           </div>
       </header>

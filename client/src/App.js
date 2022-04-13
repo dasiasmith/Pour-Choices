@@ -51,7 +51,7 @@ function App() {
               <Route path="/awaybar" element={<AwayBar />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/me" element={<Profile />} />
               <Route path="/profiles/:username" element={<Profile />} />
             </Routes>
           </div>
