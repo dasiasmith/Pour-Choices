@@ -86,7 +86,7 @@ const Profile = () => {
             </Link>
             <button
               className="btn btn-sm btn-light m-2"
-              onClick={() => navigate("/me")}
+              onClick={() => navigate("/")}
             >
               Logout
             </button>
