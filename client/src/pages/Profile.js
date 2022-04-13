@@ -11,6 +11,7 @@ import RecipeList from "../components/RecipeList";
 import Auth from "../utils/auth";
 
 const Profile = () => {
+  const navigate = useNavigate();
   // const logout = (event) => {
   //   event.preventDefault();
   //   Auth.logout();
@@ -20,7 +21,7 @@ const Profile = () => {
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
-  const navigate = useNavigate();
+
   const user = data?.me || data?.user || {};
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -86,7 +87,10 @@ const Profile = () => {
             </Link>
             <button
               className="btn btn-sm btn-light m-2"
-              onClick={() => navigate("/")}
+              onClick={() => {
+                navigate("/");
+                Auth.logout();
+              }}
             >
               Logout
             </button>
