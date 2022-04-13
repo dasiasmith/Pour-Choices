@@ -7,7 +7,7 @@ import { QUERY_RECIPES, QUERY_ME } from "../../utils/queries";
 import RecipeEditForm from "../RecipeEditForm";
 
 const CardBody = ({ recipe, handleEditButton, handleDeleteRecipe }) => (
-  <div className="card-body  p-2">
+  <div className="card-body p-2">
     <p>{recipe.recipeName}</p>
     <p>ingredients: {recipe.ingredients}</p>
     <p>instructions: {recipe.instructions}</p>
@@ -19,13 +19,13 @@ const CardBody = ({ recipe, handleEditButton, handleDeleteRecipe }) => (
       }}
     >
       <button
-        className="btn btn-info"
+        className="btn btn-info float-right"
         onClick={() => handleEditButton(recipe._id)}
       >
         Edit Recipe
       </button>
       <button
-        className="btn btn-danger"
+        className="btn btn-danger float-right"
         onClick={() => handleDeleteRecipe(recipe._id)}
       >
         Delete Recipe
@@ -43,7 +43,7 @@ const RecipeList = ({
   const [isEdit, setIsEdit] = useState();
   const [removeRecipe, { error }] = useMutation(REMOVE_RECIPE);
   if (!recipes.length) {
-    return <h3>No Recipes Yet</h3>;
+    return <h1>No Recipes Yet</h1>;
   }
 
   const handleDeleteRecipe = async (recipeId) => {
@@ -82,21 +82,21 @@ const RecipeList = ({
       {recipes &&
         recipes.map((recipe) => (
           <div key={recipe._id} className="card mb-3">
-            <h4 className="card-header  text-dark p-2 m-0">
+            <h4 className="card-header text-dark p-2 m-0">
               {showUsername ? (
                 <Link
                   className="text-light"
                   to={`/profiles/${recipe.recipeAuthor}`}
                 >
                   {recipe.recipeAuthor} <br />
-                  <span style={{ fontSize: "1rem" }}>
-                    had this recipe on {recipe.createdAt}
+                  <span style={{ fontSize: "1.25rem" }}>
+                    created this recipe on {recipe.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
-                  <span style={{ fontSize: "1rem" }}>
-                    You had this recipe on {recipe.createdAt}
+                  <span style={{ fontSize: "1.25rem" }}>
+                    created this recipe on {recipe.createdAt}
                   </span>
                 </>
               )}

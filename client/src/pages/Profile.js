@@ -2,12 +2,16 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+
 import { useLocation, useNavigate } from "react-router-dom";
+
 import { QUERY_USER, QUERY_ME, QUERY_RECIPES } from "../utils/queries";
 import profileBar from "../assets/profileBar.png";
 import RecipeForm from "../components/RecipeForm";
 import RecipeList from "../components/RecipeList";
 import Auth from "../utils/auth";
+import logo from "../assets/PCLogo.png";
+import "../App";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -51,8 +55,9 @@ const Profile = () => {
                 <h4>
                   You need to be logged in to see this!
                   <br></br>
-                  <Link to="/signup">Sign up</Link> or{" "}
-                  <Link to="/login">log in!</Link>
+                  <a href="./signup">Sign up</a>
+                  {" or "}
+                  <a href="/login">log in</a>!
                 </h4>
               </div>
             </div>
@@ -63,7 +68,7 @@ const Profile = () => {
   }
   return (
     <div
-      className="flex-column justify-flex-start"
+      className=""
       style={{
         backgroundImage: `url(${profileBar})`,
         backgroundPosition: "center",
@@ -71,41 +76,34 @@ const Profile = () => {
         backgroundRepeat: "no-repeat",
         width: "100vw",
         height: "100vh",
+        overflowX: "scroll",
       }}
     >
-      <div>
-        <Link className="text-light" to="/">
-          <h3 className="m-0">Homepage</h3>
-        </Link>
-      </div>
-      <div>
-        {Auth.loggedIn() ? (
-          <>
-            <Link className="btn btn-sm btn-info  m-2" to="/me">
-              {Auth.getProfile().data.username}'s profile
-            </Link>
-            <button className="btn btn-sm btn-light m-2" onClick={logout}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-            <Link className="btn btn-lg btn-info m-2" to="/login">
-              Login
-            </Link>
-            <Link className="btn btn-lg btn-light m-2" to="/signup">
-              Signup
-            </Link>
-          </>
+      <header className="text-light flex-column align-center mb-5 p-5">
+        <div className="flex-row justify-center">
+          <a href="/">
+            <img src={logo} />
+          </a>
+        </div>
+        {Auth.loggedIn() && (
+          <div className="flex-row justify-center align-center">
+            <h5
+              className="m-2 decoration-none text-light"
+              style={{ cursor: "pointer" }}
+              onClick={logout}
+            >
+              Log out
+            </h5>
+          </div>
         )}
-      </div>
+      </header>
       {/* <Link to="/">Homepage</Link> */}
       <div className="flex-container">
-        <div className="flex-row  flex-child justify-center mb-3">
-          <h2 className="col-12 col-md-10  text-dark p-3 mb-5">
-            Viewing {userParam ? `${user.username}'s` : "your"} recipes.
+        <div className="flex-row flex-child justify-center text-light">
+          <h2 className="col-12 col-md-10 text-light p-3 mb-0">
+            <h3> Viewing {Auth.getProfile().data.username}'s recipes</h3>
           </h2>
-          <div className="col-12 col-md-10 mb-5">
+          <div className="col-12 col-md-10">
             <RecipeList
               recipes={user.recipes}
               title={`${user.username}'s recipes...`}
