@@ -930,7 +930,7 @@ a:hover {
 }
 
 .text-link {
-  color: #1b89bc !important;
+  color: #ffffff !important;
 }
 
 /* BACKGROUND UTILS */
@@ -985,6 +985,10 @@ a:hover {
 
 .display-flex {
   display: flex !important;
+}
+
+.decoration-none{
+  text-decoration: none;
 }
 
 .btn {
