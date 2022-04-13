@@ -109,6 +109,20 @@ const Profile = () => {
           </div>
         </div>
 
+        {/* <div className="profile col-md-10">
+          <p>&#128516;</p>
+          <div class="card-body">
+            <p class="card-text">About Me</p>
+          </div>
+        </div>
+        <div className="user-recipe">recipe goes here</div> */}
+        {/* <div className="col-12 col-md-10 mb-5"></div>
+        {!userParam && (
+          <div
+            className="col-12 col-md-10 mb-3 p-3"
+            style={{ border: "1px dotted #1a1a1a" }}
+          ></div>
+        )} */}
         {!userParam && (
           <div
             className="flex-child col-12 col-md-10 mb-3 p-3"

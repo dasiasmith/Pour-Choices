@@ -74,6 +74,7 @@ const Homebar = () => {
         minheight:"100vh",
       }}
     >
+
       <main className="flex-column justify-center align-center">
         <header className="text-light flex-column align-center mb-5 p-5">
           <div className="flex-row justify-center">
