@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import { QUERY_USER, QUERY_ME, QUERY_RECIPES } from "../utils/queries";
 import profileBar from "../assets/profileBar.png";
 import RecipeForm from "../components/RecipeForm";
@@ -10,6 +10,7 @@ import RecipeList from "../components/RecipeList";
 import Auth from "../utils/auth";
 
 const Profile = () => {
+  const navigate = useNavigate();
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
