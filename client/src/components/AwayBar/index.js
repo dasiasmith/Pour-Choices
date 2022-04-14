@@ -48,7 +48,6 @@ const Auto1 = () => {
     setDisplay(false);
     console.log(ing) // Logs user input/selection
     const tourl = ing.replace(/ /g,"_"); // Replaces spaces with underscore
-    console.log(tourl)
     let ingUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+tourl
     getCatapi(ingUrl)
   };
@@ -210,7 +209,7 @@ const Auto2 = () => {
   );
 };
 
-
+// getingIds and getcatIds are banes of array I want to compare
 
 
 
