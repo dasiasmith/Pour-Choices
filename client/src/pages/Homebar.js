@@ -9,7 +9,8 @@ import { useQuery } from "@apollo/client";
 import logo from "../assets/PCLogo.png";
 import Auth from "../utils/auth";
 import "../App";
-import RecipeBook from "../components/RecipeBook";
+// import RecipeBook from "../components/RecipeBook/RecipeBook";
+import  Autocomplete  from '../components/Homebar/Autocomplete';
 // import  Autocomplete  from '../components/Homebar/Autocomplete';
 // import { useQuery } from "@apollo/client";
 
@@ -106,7 +107,8 @@ const Homebar = () => {
             </div>
           )}
         </header>
-        <RecipeBook/>
+        {/* <RecipeBook/> */}
+        <Autocomplete/>
         </main>
         </div>
     );

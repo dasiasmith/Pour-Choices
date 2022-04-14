@@ -1,7 +1,7 @@
 import React from "react";
 import bookBack from "../../assets/bookbackground.jpg";
 import HTMLFlipBook from "react-pageflip";
-import "./recipeBook.css";
+// import "./recipeBook.css";
 
 const RecipeBook = () => {
   return (
