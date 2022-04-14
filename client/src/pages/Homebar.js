@@ -4,13 +4,13 @@ import { Navigate, useParams } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME, QUERY_RECIPES } from "../utils/queries";
 import { LOGIN_USER } from "../utils/mutations";
-import homeBar from "../assets/homeBar.png";
+import homeBar from "../assets/homebar.png";
 import { useQuery } from "@apollo/client";
 import logo from "../assets/PCLogo.png";
 import Auth from "../utils/auth";
 import "../App";
 // import RecipeBook from "../components/RecipeBook/RecipeBook";
-import  Autocomplete  from '../components/Homebar/Autocomplete';
+import Autocomplete from "../components/Homebar/Autocomplete";
 // import  Autocomplete  from '../components/Homebar/Autocomplete';
 // import { useQuery } from "@apollo/client";
 
@@ -24,7 +24,6 @@ const Homebar = () => {
   const user = data?.me || data?.user || {};
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
-
 
   const logout = (event) => {
     event.preventDefault();
@@ -63,7 +62,6 @@ const Homebar = () => {
     );
   }
   return (
-
     <div
       className="flex-column justify-flex-start"
       style={{
@@ -72,10 +70,9 @@ const Homebar = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100vw",
-        minheight:"100vh",
+        minheight: "100vh",
       }}
     >
-
       <main className="flex-column justify-center align-center">
         <header className="text-light flex-column align-center mb-5 p-5">
           <div className="flex-row justify-center">
@@ -108,15 +105,13 @@ const Homebar = () => {
           )}
         </header>
         {/* <RecipeBook/> */}
-        <Autocomplete/>
-        </main>
-        </div>
-    );
+        <Autocomplete />
+      </main>
+    </div>
+  );
 };
 
 export default Homebar;
-
-
 
 // HOMEBAR
 //       <main className="flex-row align-center min-100-vh">
@@ -127,4 +122,4 @@ export default Homebar;
 //     <Autocomplete />
 //     </div>
 //     </main>
-//   </div>  
+//   </div>
