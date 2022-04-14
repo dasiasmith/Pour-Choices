@@ -66,16 +66,16 @@ const RecipeForm = () => {
   };
   return (
     <div>
-      <h3>Create your own recipe?</h3>
+      <h3 className="text-light mx-3">Create your own recipe?</h3>
 
       {Auth.loggedIn() ? (
         <>
           <form
-            className="flex-row justify-center justify-space-between-md align-center"
+            className="flex-row justify-space-between-md"
             onSubmit={handleFormSubmit}
           >
             <div style={{ width: "100%" }}>
-              <div className="col-12 col-lg-9">
+              <div className="col-12 col-lg-11">
                 <textarea
                   name="recipeName"
                   placeholder="Here is the name of recipe"
@@ -86,7 +86,7 @@ const RecipeForm = () => {
                 ></textarea>
                 <textarea
                   name="ingredients"
-                  placeholder="Here is the ingredients"
+                  placeholder="Here are the ingredients"
                   value={ingredients}
                   className="form-input w-100"
                   style={{ lineHeight: "1.5", resize: "vertical" }}
@@ -94,7 +94,7 @@ const RecipeForm = () => {
                 ></textarea>
                 <textarea
                   name="instructions"
-                  placeholder="Here is the instructions"
+                  placeholder="Here are the instructions"
                   value={instructions}
                   className="form-input w-100"
                   style={{ lineHeight: "1.5", resize: "vertical" }}
@@ -104,7 +104,8 @@ const RecipeForm = () => {
 
               <div className="col-12 col-lg-3">
                 <button
-                  className="btn btn-primary btn-block py-3"
+                  className="btn btn-sm btn-dark py-3"
+                  style={{ cursor: "pointer" }}
                   type="submit"
                 >
                   Add Recipe

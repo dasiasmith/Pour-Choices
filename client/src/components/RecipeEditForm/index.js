@@ -93,7 +93,7 @@ const RecipeEditForm = ({ recipeInfo, setIsEdit }) => {
       </div>
       <div>
         <button
-          className="btn btn-primary btn-block py-3"
+          className="btn btn-primary btn-block py-3 "
           onClick={handleFormSubmit}
         >
           Update Changes
