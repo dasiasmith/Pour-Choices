@@ -14,6 +14,8 @@ import Auth from "../utils/auth";
 import logo from "../assets/PCLogo.png";
 import "../App";
 
+// profile
+
 const Profile = () => {
   const navigate = useNavigate();
   const logout = (event) => {
