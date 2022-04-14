@@ -17,6 +17,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const logout = (event) => {
     event.preventDefault();
+    navigate("/");
     Auth.logout();
   };
   const { username: userParam } = useParams();
