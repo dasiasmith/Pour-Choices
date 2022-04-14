@@ -9,7 +9,7 @@ import awayBar from "../assets/awayBar.jpeg";
 import { useQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 import "../App";
-import RecipeBook from "../components/RecipeBook/RecipeBook";
+// import RecipeBook from "../components/RecipeBook/RecipeBook";
 
 const Awaybar = () => {
   const { username: userParam } = useParams();
@@ -21,7 +21,6 @@ const Awaybar = () => {
   const user = data?.me || data?.user || {};
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
-
 
   const logout = (event) => {
     event.preventDefault();
@@ -68,7 +67,7 @@ const Awaybar = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100vw",
-        minheight:"100vh",
+        minheight: "100vh",
       }}
     >
       <main className="flex-column justify-center align-center">
@@ -102,10 +101,10 @@ const Awaybar = () => {
             </div>
           )}
         </header>
-        <RecipeBook/>
-        </main>
-        </div>
-    );
+        {/* <RecipeBook /> */}
+      </main>
+    </div>
+  );
 };
 
 export default Awaybar;
@@ -152,6 +151,6 @@ export default Awaybar;
 //             <button onClick={getRandomCocktail}>Click Me</button>
 //             <section style={{ color: "white" }} id="drink-section"></section>
 //         </div>
-        
+
 //     )
 // }
