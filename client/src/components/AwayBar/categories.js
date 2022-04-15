@@ -61,6 +61,7 @@ import React, { useEffect, useState, useRef } from "react";
     }
 
     // Page layout
+    // Categories and ingredients use a simple drop down so I don't think there will need to be much styling here
     return (
       <div ref={wrapperRef} className="flex-container flex-column pos-rel">
         <input

@@ -1,7 +1,7 @@
-import { responsePathAsArray } from "graphql";
 import React, { useEffect, useState, useRef } from "react";
 import { Auto2 } from "./categories";
 import { Auto1 } from "./ingredients";
+import randomDrink from "./randomCocktail";
 
 export default function Acomplete() {
   const [ingData, setingData] = useState([])
@@ -40,14 +40,14 @@ export default function Acomplete() {
       function displayCocktail(cocktail) {
       console.log(cocktail.drinks[0].strDrink); //Gives just drink name
   
-      let cocktailSection = document.querySelector("#cocktail-section");
+      let cocktailSection = document.querySelector("#cocktail-section"); // This is the same setup as the randomCocktail.js. Drinks are listed as list elements
       let cocktailName = document.createElement("h2");
-      cocktailName.innerHTML = cocktail.drinks[0].strDrink;
+      cocktailName.innerHTML = cocktail.drinks[0].strDrink; // const name = cocktail.drinks[0].strDrink
   
-      cocktailSection.appendChild(cocktailName);
+      cocktailSection.appendChild(cocktailName); // If you want to change the style just change the create element
   
       let img = document.createElement("img");
-      img.src = cocktail.drinks[0].strDrinkThumb;
+      img.src = cocktail.drinks[0].strDrinkThumb; // drinkImg = cocktail.drink[0].strDrinkThumb
   
       cocktailSection.appendChild(img);
   
@@ -58,22 +58,20 @@ export default function Acomplete() {
         }
         let ingredient = document.createElement("li");
         ingredient.innerHTML =
-          cocktail.drinks[0][`strMeasure${i}`] +
+          cocktail.drinks[0][`strMeasure${i}`] + // const measurement = cocktail.drink[0][`strMeasure${i}`]
           ":" +
-          cocktail.drinks[0][`strIngredient${i}`];
+          cocktail.drinks[0][`strIngredient${i}`]; // const ingredient = cocktail.drink[0][`strIngredient${i}`]
   
         cocktailSection.appendChild(ingredient);
       }
   
       let drinkCard = document.createElement("li");
-      drinkCard.innerHTML = cocktail.drinks[0].strInstructions;
+      drinkCard.innerHTML = cocktail.drinks[0].strInstructions; // again, instructions might not be needed bc user is ordering not making
   
       cocktailSection.appendChild(drinkCard);
     }
     
   }
-
-
 
   return (
     <div className="App">
@@ -90,7 +88,9 @@ export default function Acomplete() {
       <h1>You should order:</h1>
       <section style={{
           height: '500px',
-          overflow: 'auto',}} id="cocktail-section"></section>
-      </div>
+          overflow: 'auto',}} id="cocktail-section">
+      </section>
+      <randomDrink/>
+    </div>
   );
 }
