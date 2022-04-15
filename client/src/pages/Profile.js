@@ -19,7 +19,6 @@ import "../App";
 const Profile = () => {
   const navigate = useNavigate();
   const logout = (event) => {
-    navigate("/");
     event.preventDefault();
     navigate("/");
     Auth.logout();

@@ -10,8 +10,10 @@ import { useQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 import "../App";
 import RecipeBook from "./RecipeBook/RecipeBook";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Awaybar = () => {
+  const navigate = useNavigate();
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -24,6 +26,7 @@ const Awaybar = () => {
 
   const logout = (event) => {
     event.preventDefault();
+    navigate("/");
     Auth.logout();
   };
 

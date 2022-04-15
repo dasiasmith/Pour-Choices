@@ -11,10 +11,12 @@ import Auth from "../utils/auth";
 import "../App";
 import RecipeBook from "./RecipeBook/RecipeBook";
 import Autocomplete from "../components/Homebar/Autocomplete";
+import { useLocation, useNavigate } from "react-router-dom";
 // import  Autocomplete  from '../components/Homebar/Autocomplete';
 // import { useQuery } from "@apollo/client";
 
 const Homebar = () => {
+  const navigate = useNavigate();
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -27,6 +29,7 @@ const Homebar = () => {
 
   const logout = (event) => {
     event.preventDefault();
+    navigate("/");
     Auth.logout();
   };
 
