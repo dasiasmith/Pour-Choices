@@ -10,10 +10,8 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function CheckboxesTags() {
   const [data, setData] = useState([]);
-  const [drinkid, setDrinkid] = useState([]);
   const [list, setList] = useState([]);
   const [selected, setSelected] = useState([]);
-  const [title, setTitle] = useState([]);
   const [isFetched, setIsFetched] = useState(false);
   const [singleDrink, setSingleDrink] = useState([])
 
@@ -75,7 +73,7 @@ export default function CheckboxesTags() {
         console.log(singleDrink, "sin")
       });
   };
-
+// renders the checkbox and its items
   return (
     <>
       <Autocomplete
@@ -109,7 +107,7 @@ export default function CheckboxesTags() {
           <TextField {...params} label="Checkboxes" placeholder="Favorites" />
         )}
       />
-
+      {/* populates the drinks options and their images */}
       <div className="row">
         {list.length > 0 ? (
           list.map((e) => (
@@ -125,7 +123,7 @@ export default function CheckboxesTags() {
              
             </div>
           ))
-          
+          // returns no data if the user selected ingredients that can't generate a cocktail
         ) : null}
         {selected.length && !list.length ? (
           <div>
@@ -133,6 +131,7 @@ export default function CheckboxesTags() {
           </div>
         ) : null
           }
+          {/* renders the recipe and the ingredients for the cocktail */}
       </div>
       {
         isFetched && <div style={{color: 'white'}}>
