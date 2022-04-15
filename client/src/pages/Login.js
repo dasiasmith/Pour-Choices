@@ -5,8 +5,10 @@ import { LOGIN_USER } from "../utils/mutations";
 import loginBar from "../assets/loginBar.jpeg";
 import Auth from "../utils/auth";
 import logo from "../assets/PCLogo.png";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
+  const navigate = useNavigate();
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -43,6 +45,7 @@ const Login = (props) => {
 
   const logout = (event) => {
     event.preventDefault();
+    navigate("/");
     Auth.logout();
   };
 

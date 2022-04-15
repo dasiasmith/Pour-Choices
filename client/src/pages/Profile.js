@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
@@ -13,10 +14,13 @@ import Auth from "../utils/auth";
 import logo from "../assets/PCLogo.png";
 import "../App";
 
+// profile
+
 const Profile = () => {
   const navigate = useNavigate();
   const logout = (event) => {
     event.preventDefault();
+    navigate("/");
     Auth.logout();
   };
   const { username: userParam } = useParams();

@@ -9,10 +9,13 @@ import { useQuery } from "@apollo/client";
 import logo from "../assets/PCLogo.png";
 import Auth from "../utils/auth";
 import "../App";
+import Autocomplete from "../components/Homebar/Autocomplete";
+import { useLocation, useNavigate } from "react-router-dom";
 // import  Autocomplete  from '../components/Homebar/Autocomplete';
 // import { useQuery } from "@apollo/client";
 
 const Homebar = () => {
+  const navigate = useNavigate();
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -23,9 +26,9 @@ const Homebar = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
 
-
   const logout = (event) => {
     event.preventDefault();
+    navigate("/");
     Auth.logout();
   };
 
@@ -61,7 +64,6 @@ const Homebar = () => {
     );
   }
   return (
-
     <div
       className="flex-column justify-flex-start"
       style={{
@@ -70,10 +72,9 @@ const Homebar = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100vw",
-        height:"100vh",
+        minheight: "100vh",
       }}
     >
-
       <main className="flex-column justify-center align-center">
         <header className="text-light flex-column align-center mb-5 p-5">
           <div className="flex-row justify-center">
@@ -105,14 +106,13 @@ const Homebar = () => {
             </div>
           )}
         </header>
-        </main>
-        </div>
-    );
+        <Autocomplete />
+      </main>
+    </div>
+  );
 };
 
 export default Homebar;
-
-
 
 // HOMEBAR
 //       <main className="flex-row align-center min-100-vh">
@@ -123,4 +123,4 @@ export default Homebar;
 //     <Autocomplete />
 //     </div>
 //     </main>
-//   </div>  
+//   </div>

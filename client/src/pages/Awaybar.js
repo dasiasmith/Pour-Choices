@@ -9,8 +9,10 @@ import awayBar from "../assets/awayBar.jpeg";
 import { useQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 import "../App";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Awaybar = () => {
+  const navigate = useNavigate();
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -21,9 +23,9 @@ const Awaybar = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
 
-
   const logout = (event) => {
     event.preventDefault();
+    navigate("/");
     Auth.logout();
   };
 
@@ -67,7 +69,7 @@ const Awaybar = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100vw",
-        height:"100vh",
+        minheight: "100vh",
       }}
     >
       <main className="flex-column justify-center align-center">
@@ -150,6 +152,6 @@ export default Awaybar;
 //             <button onClick={getRandomCocktail}>Click Me</button>
 //             <section style={{ color: "white" }} id="drink-section"></section>
 //         </div>
-        
+
 //     )
 // }
