@@ -9,7 +9,6 @@ import awayBar from "../assets/awayBar.jpeg";
 import { useQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 import "../App";
-import RecipeBook from "./RecipeBook/RecipeBook";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Awaybar = () => {
@@ -40,7 +39,7 @@ const Awaybar = () => {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           width: "100vw",
-          height: "100vh",
+          height: "100vh"
         }}
       >
         <main className="flex-row justify-center align-center min-100-vh">
@@ -104,10 +103,9 @@ const Awaybar = () => {
             </div>
           )}
         </header>
-        <RecipeBook />
-      </main>
-    </div>
-  );
+        </main>
+        </div>
+    );
 };
 
 export default Awaybar;

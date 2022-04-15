@@ -1070,6 +1070,7 @@ a:hover {
 }
 
 .btn.btn-dark {
+  width: 100%;
   background-color: #1a1a1ab7;
   color: #ffffff;
 }
