@@ -9,7 +9,7 @@ import awayBar from "../assets/awayBar.jpeg";
 import { useQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 import "../App";
-import RecipeBook from "../components/RecipeBook/RecipeBook";
+import RecipeBook from "./RecipeBook/RecipeBook";
 
 const Awaybar = () => {
   const { username: userParam } = useParams();
