@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { QUERY_USER, QUERY_ME, QUERY_RECIPES } from "../utils/queries";
@@ -9,8 +8,10 @@ import { LOGIN_USER } from "../utils/mutations";
 import loginBar from "../assets/loginBar.jpeg";
 import Auth from "../utils/auth";
 import logo from "../assets/PCLogo.png";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Home = (props) => {
+  const navigate = useNavigate();
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -54,6 +55,7 @@ const Home = (props) => {
 
   const logout = (event) => {
     event.preventDefault();
+    navigate("/");
     Auth.logout();
   };
 
@@ -77,12 +79,9 @@ const Home = (props) => {
                 <h4>
                   You need to be logged in to see this!
                   <br></br>
-                  <a href="./signup">
-                    Sign up
-                  </a>{" or "}
-                  <a href="/login">
-                    log in
-                    </a>!
+                  <a href="./signup">Sign up</a>
+                  {" or "}
+                  <a href="/login">log in</a>!
                 </h4>
               </div>
             </div>
@@ -140,7 +139,8 @@ const Home = (props) => {
                 <Link
                   className="btn btn-block"
                   style={{ cursor: "pointer" }}
-                  Link to="/Homebar"
+                  Link
+                  to="/Homebar"
                 >
                   Home
                 </Link>
@@ -153,7 +153,8 @@ const Home = (props) => {
                 <Link
                   className="btn btn-block"
                   style={{ cursor: "pointer" }}
-                  Link to="/Awaybar"
+                  Link
+                  to="/Awaybar"
                 >
                   Away
                 </Link>
