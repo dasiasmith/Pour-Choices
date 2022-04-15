@@ -5,21 +5,24 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("recipes");
+      return await User.find().populate("recipes");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("recipes");
+      return await User.findOne({ username }).populate("recipes");
     },
+    // ??? no username is ok
     recipes: async (parent, { username }) => {
-      const params = username ? { username } : {};
+      const params = username ? { recipeAuthor: username } : {};
       return await Recipe.find(params).sort({ createdAt: -1 });
     },
     recipe: async (parent, { recipeId }) => {
-      return Recipe.findOne({ _id: recipeId });
+      return await Recipe.findOne({ _id: recipeId });
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("recipes");
+        return await User.findOne({ _id: context.user._id }).populate(
+          "recipes"
+        );
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -103,6 +106,34 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    updateRecipe: async (
+      parent,
+      { recipeName, ingredients, instructions },
+      context
+    ) => {
+      return await Recipe.findByIdAndUpdate(
+        { _id: context.body.variables.recipedId },
+        {
+          recipeName,
+          ingredients,
+          instructions,
+        }
+      );
+    },
+    // updateRecipe: async (
+    //   parent,
+    //   { recipeId, recipeName, ingredients, instructions },
+    //   context
+    // ) => {
+    //   console.log("context--------------->: ", context);
+    //   return await Recipe.findOneAndUpdate(
+    //     { _id: recipeId },
+    //     { recipeName },
+    //     { ingredients },
+    //     { instructions },
+    //     { new: true }
+    //   );
+    // },
     // removeComment: async (parent, { thoughtId, commentId }, context) => {
     //   if (context.user) {
     //     return Thought.findOneAndUpdate(

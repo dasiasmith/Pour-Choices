@@ -41,6 +41,12 @@ const typeDefs = gql`
     ): Recipe
 
     removeRecipe(recipeId: ID!): Recipe
+    updateRecipe(
+      recipedId: ID!
+      recipeName: String!
+      ingredients: String!
+      instructions: String!
+    ): Recipe
   }
 `;
 

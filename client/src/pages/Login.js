@@ -4,8 +4,11 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import loginBar from "../assets/loginBar.jpeg";
 import Auth from "../utils/auth";
+import logo from "../assets/PCLogo.png";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
+  const navigate = useNavigate();
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -40,6 +43,12 @@ const Login = (props) => {
     });
   };
 
+  const logout = (event) => {
+    event.preventDefault();
+    navigate("/");
+    Auth.logout();
+  };
+
   return (
     <div
       className="flex-column justify-flex-start"
@@ -52,7 +61,29 @@ const Login = (props) => {
         height: "100vh",
       }}
     >
-      <main className="flex-row justify-center align-center min-100-vh">
+      <main className="flex-column justify-center align-center">
+        <header className="text-light flex-column align-center mb-5 p-5">
+          <div className="flex-row justify-center">
+            <img src={logo} />
+          </div>
+          {Auth.loggedIn() ? (
+            <div className="flex-row justify-space-between-lg justify-center align-center">
+              <h5
+                className="m-2"
+                style={{ cursor: "pointer" }}
+                onClick={logout}
+              >
+                Log out
+              </h5>
+            </div>
+          ) : (
+            <div className="flex-row">
+              <Link className="m-2 decoration-none text-light" to="/signup">
+                <h5>Sign up</h5>
+              </Link>
+            </div>
+          )}
+        </header>
         <div className="col-12 col-lg-4">
           <div className="card">
             <h1 className="card-header text-dark text-center">Login</h1>
