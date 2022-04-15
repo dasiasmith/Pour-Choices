@@ -14,18 +14,18 @@ const CardBody = ({ recipe, handleEditButton, handleDeleteRecipe }) => (
     <div
       style={{
         display: "flex",
-        width: "50%",
+        width: "100%",
         justifyContent: "space-around",
       }}
     >
       <button
-        className="btn btn-info float-right"
+        className="btn btn-info"
         onClick={() => handleEditButton(recipe._id)}
       >
         Edit Recipe
       </button>
       <button
-        className="btn btn-danger float-right"
+        className="btn btn-danger"
         onClick={() => handleDeleteRecipe(recipe._id)}
       >
         Delete Recipe

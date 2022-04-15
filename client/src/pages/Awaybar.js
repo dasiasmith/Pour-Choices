@@ -9,7 +9,6 @@ import awayBar from "../assets/awayBar.jpeg";
 import { useQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 import "../App";
-import RecipeBook from "../components/RecipeBook";
 
 const Awaybar = () => {
   const { username: userParam } = useParams();
@@ -38,7 +37,7 @@ const Awaybar = () => {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           width: "100vw",
-          height: "100vh",
+          height: "100vh"
         }}
       >
         <main className="flex-row justify-center align-center min-100-vh">
@@ -68,7 +67,7 @@ const Awaybar = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100vw",
-        minheight:"100vh",
+        height:"100vh",
       }}
     >
       <main className="flex-column justify-center align-center">
@@ -102,7 +101,6 @@ const Awaybar = () => {
             </div>
           )}
         </header>
-        <RecipeBook/>
         </main>
         </div>
     );
