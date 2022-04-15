@@ -58,8 +58,21 @@ export default function CheckboxesTags() {
       .then((data) => {
         setIsFetched(true)
         let newData3 = data.drinks[0];
+        // setSingleDrink(newData3)
+        console.log(newData3);
+        let ing = []
+        let mea = []
+        for(let i = 1 ; i < 15; i++) {
+          console.log(newData3[`strIngredient${i}`])
+          newData3[`strIngredient${i}`] && ing.push(newData3[`strIngredient${i}`])
+          newData3[`strIngredient${i}`] && mea.push(newData3[`strMeasure${i}`])
+        }
+        newData3.ingredients = ing
+        newData3.measurements = mea
         setSingleDrink(newData3)
-        //console.log(newData3);
+        console.log(ing)
+        console.log(mea)
+        console.log(singleDrink, "sin")
       });
   };
 
@@ -74,7 +87,9 @@ export default function CheckboxesTags() {
           setSelected(newValue);
         }}
         onClose={(e) => {
-          fetchList();
+           // fetchList();
+           if(selected.length) fetchList()
+           // alert("fetch me the stuff")
         }}
         disableCloseOnSelect
         getOptionLabel={(option) => option.title}
@@ -111,25 +126,22 @@ export default function CheckboxesTags() {
             </div>
           ))
           
-        ) : (
+        ) : null}
+        {selected.length && !list.length ? (
           <div>
             <p style={{ color: "white" }}>no data</p>
           </div>
-        )}
+        ) : null
+          }
       </div>
       {
         isFetched && <div style={{color: 'white'}}>
         <h2>Ingredients</h2>
+      
         <ul>
-          <li>{ singleDrink.strIngredient1 } : { singleDrink.strMeasure1 }</li>
-          <li>{ singleDrink.strIngredient2 } : { singleDrink.strMeasure2 }</li>
-          <li>{ singleDrink.strIngredient3 } : { singleDrink.strMeasure3 }</li>
-          <li>{ singleDrink.strIngredient4 } : { singleDrink.strMeasure4 }</li>
-          <li>{ singleDrink.strIngredient5 } : { singleDrink.strMeasure5 }</li>
-          <li>{ singleDrink.strIngredient6 } : { singleDrink.strMeasure6 }</li>
-          <li>{ singleDrink.strIngredient7 } : { singleDrink.strMeasure7 }</li>
-          <li>{ singleDrink.strIngredient8 } : { singleDrink.strMeasure8 }</li>
-          <li>{ singleDrink.strIngredient9 } : { singleDrink.strMeasure9 }</li>
+          {singleDrink.ingredients?.map((item, index) => (
+            <li key={index}>{item} : {singleDrink.measurements[index]}</li>
+          ))}
         </ul>
         <p><b>Instructions:</b> { singleDrink.strInstructions }</p>
       </div>
