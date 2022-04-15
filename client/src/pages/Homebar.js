@@ -4,7 +4,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME, QUERY_RECIPES } from "../utils/queries";
 import { LOGIN_USER } from "../utils/mutations";
-import homeBar from "../assets/homeBar.png";
+import homeBar from "../assets/homebar.png";
 import { useQuery } from "@apollo/client";
 import logo from "../assets/PCLogo.png";
 import Auth from "../utils/auth";
