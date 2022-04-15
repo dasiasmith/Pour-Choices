@@ -1,237 +1,96 @@
 import { responsePathAsArray } from "graphql";
 import React, { useEffect, useState, useRef } from "react";
+import { Auto2 } from "./categories";
+import { Auto1 } from "./ingredients";
 
+export default function Acomplete() {
+  const [ingData, setingData] = useState([])
+  const [catData, setcatData] = useState([])
 
-const Auto1 = () => {
-  const [display, setDisplay] = useState(false);
-  const [options, setOptions] = useState([]);
-  const [search, setSearch] = useState("");
-  const wrapperRef = useRef(null);
-
-  useEffect(() => {
-    const ingredient = [];
-      fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list") //List of bases
-      .then(function (response) {
-        if (response.status !==200) {
-          console.log(response.status);
-          return
-        }
-        response.json().then(function (data) {
-          
-        for (let i = 0; i < 100; i++ ) {
-          ingredient.push(data.drinks[i].strIngredient1.toLowerCase())
-        }
-        });
-      });
-      setOptions(ingredient);
-  }, []);
-  
-
-  useEffect(() => {
-    window.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      window.removeEventListener("mousedown", handleClickOutside);
-    };
+  const commonIds = ingData.filter(function (o1) {
+    return catData.some(function (o2) {
+        return o1.id === o2.id; // return the ones with equal id
+   });
   });
+  
+  commonIds.forEach(element => getidUrl(element));
 
-  // Removes dropdown when clicked outside container
-  const handleClickOutside = event => {
-    const { current: wrap } = wrapperRef;
-    if (wrap && !wrap.contains(event.target)) {
-      setDisplay(false);
+  function getidUrl(arr){
+    let idUrl = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
+    idUrl = idUrl + [arr]
+    console.log(idUrl)
+
+    getCocktail(idUrl)
+    function getCocktail(link) {
+      fetch(link)
+        .then(function (response) {
+          if (response.status !== 200) {
+            console.log("Problemo" + response.status);
+            return;
+          }
+          response.json().then(function (data) {
+            console.log(data);
+            displayCocktail(data);
+          });
+        })
+        .catch(function (err) {
+          console.log("Fetch Error :-5", err);
+        });
     }
-  };
-
-  // Ingredient search
-  const updateIng = ing => {
-    setSearch(ing);
-    setDisplay(false);
-    console.log(ing) // Logs user input/selection
-    const tourl = ing.replace(/ /g,"_"); // Replaces spaces with underscore
-    let ingUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i='+tourl
-    getCatapi(ingUrl)
-  };
-
-
-  // Returns api data from fetch
-  async function getCatapi(link){
-    const data = await fetch(link)
-    .then(res => res.json())
-    const idData = data.drinks //json array of all drinks within the category
-
-    let ingIds = [];
-    ingIds.push(...idData.map(drink => drink.idDrink)); // ingIds = array of only drink ids
-    localStorage.setItem("ingredientIds", JSON.stringify(ingIds)); // Stores ids locally
+      function displayCocktail(cocktail) {
+      console.log(cocktail.drinks[0].strDrink); //Gives just drink name
+  
+      let cocktailSection = document.querySelector("#cocktail-section");
+      let cocktailName = document.createElement("h2");
+      cocktailName.innerHTML = cocktail.drinks[0].strDrink;
+  
+      cocktailSection.appendChild(cocktailName);
+  
+      let img = document.createElement("img");
+      img.src = cocktail.drinks[0].strDrinkThumb;
+  
+      cocktailSection.appendChild(img);
+  
+      for (let i = 1; i < 16; i++) {
+        console.log(i);
+        if (cocktail.drinks[0][`strIngredient${i}`] == null) {
+          break;
+        }
+        let ingredient = document.createElement("li");
+        ingredient.innerHTML =
+          cocktail.drinks[0][`strMeasure${i}`] +
+          ":" +
+          cocktail.drinks[0][`strIngredient${i}`];
+  
+        cocktailSection.appendChild(ingredient);
+      }
+  
+      let drinkCard = document.createElement("li");
+      drinkCard.innerHTML = cocktail.drinks[0].strInstructions;
+  
+      cocktailSection.appendChild(drinkCard);
+    }
+    
   }
 
-  var getingIds = JSON.parse(localStorage.getItem('ingredientIds')) // Get ids from local storage
-  console.log(getingIds);
-
-  // Page layout
-  return (
-    <div ref={wrapperRef} className="flex-container flex-column pos-rel">
-      <input
-        id="auto"
-        onClick={() => setDisplay(!display)}
-        placeholder="Type to search"
-        value={search}
-        onChange={event => setSearch(event.target.value)}
-      />
-      {display && (
-        <div className="autoContainer" style={{
-        height: '100px',
-        overflow: 'auto',}}>
-          {options
-            
-            .filter((option) => option.indexOf(search) > -1)
-            .map((value, i) => {
-              return (
-                <div
-                
-                  onClick={() => updateIng(value)}
-                  className="option"
-                  key={i}
-                  tabIndex="0"
-                >
-                  <span>{value}</span>
-                </div>
-              );
-            })}
-        </div>
-      )}
-    </div>
-  );
-};
 
 
-
-//-------------------------------------------------//
-
-
-
-
-// Category function
-const Auto2 = () => {
-  const [display, setDisplay] = useState(false);
-  const [options, setOptions] = useState([]);
-  const [search, setSearch] = useState("");
-  const wrapperRef = useRef(null);
-
-  useEffect(() => {
-    const ingredient = [];
-      fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list")
-      .then(function (response) {
-        if (response.status !==200) {
-          console.log(response.status);
-          return
-        }
-        response.json().then(function (data) {
-          
-        for (let i = 0; i < 10; i++ ) {
-          ingredient.push(data.drinks[i].strCategory)
-        }
-        });
-      });
-      setOptions(ingredient);
-  }, []);
-  
-
-  useEffect(() => {
-    window.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      window.removeEventListener("mousedown", handleClickOutside);
-    };
-  });
-
-  // Removes dropdown when clicked outside container
-  const handleClickOutside = event => {
-    const { current: wrap } = wrapperRef;
-    if (wrap && !wrap.contains(event.target)) {
-      setDisplay(false);
-    }
-  };
-
-  // Category search
-  const updatecat = cat => {
-    setSearch(cat);
-    setDisplay(false);
-    console.log(cat) // Logs user input/selection
-    const tourl = cat.replace(/ /g,"_");
-    console.log(tourl)
-    let catUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c='+tourl
-    getCatapi(catUrl)
-  };
-
-
-  // Returns api data from fetch
-  async function getCatapi(link){
-    const data = await fetch(link)
-    .then(res => res.json())
-    const idData = data.drinks //json array of all drinks within the category
-
-    let catIds = [];
-    catIds.push(...idData.map(drink => drink.idDrink)); // catIds = array of only drink ids
-    localStorage.setItem("categoryIds", JSON.stringify(catIds)); // Stores ids locally
-  }
-
-  var getcatIds = JSON.parse(localStorage.getItem('categoryIds')) // Get ids from local storage
-  console.log(getcatIds);
-
-  // Page layout
-  return (
-    <div ref={wrapperRef} className="flex-container flex-column pos-rel">
-      <input
-        id="auto"
-        onClick={() => setDisplay(!display)}
-        placeholder="Type to search"
-        value={search}
-        onChange={event => setSearch(event.target.value)}
-      />
-      {display && (
-        <div className="autoContainer">
-          {options
-            .filter((option) => option.indexOf(search) > -1)
-            .map((value, i) => {
-              return (
-                <div
-                  onClick={() => updatecat(value)}
-                  className="option"
-                  key={i}
-                  tabIndex="0"
-                >
-                  <span>{value}</span>
-                </div>
-              );
-            })}
-        </div>
-      )}
-    </div>
-  );
-};
-
-// getingIds and getcatIds are banes of array I want to compare
-
-
-
-
-
-
-
-function acomplete() {
   return (
     <div className="App">
       <h1>Choose Your Base</h1>
       <div className="logo"></div>
       <div className="auto-container">
-        <Auto1 />
+        <Auto1 ingIds = {ingData} setIngredientData = {setingData}/>
       </div>
       <h1>Choose a Category</h1>
       <div className="logo"></div>
       <div className="auto-container">
-        <Auto2 />
+        <Auto2 catIds = {catData} setCategoryData = {setcatData}/>
       </div>
-    </div>
+      <h1>You should order:</h1>
+      <section style={{
+          height: '500px',
+          overflow: 'auto',}} id="cocktail-section"></section>
+      </div>
   );
 }
-
-export default acomplete;
