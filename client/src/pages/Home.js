@@ -79,9 +79,9 @@ const Home = (props) => {
                 <h4>
                   You need to be logged in to see this!
                   <br></br>
-                  <a href="./signup">Sign up</a>
+                  <Link to="/signup">Sign up</Link>
                   {" or "}
-                  <a href="/login">log in</a>!
+                  <Link to="/login">log in</Link>!
                 </h4>
               </div>
             </div>
