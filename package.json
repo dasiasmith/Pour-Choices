@@ -14,9 +14,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.4",
+    "webpack": "^5.70.0"
   },
   "dependencies": {
-    "axios": "^0.26.1"
+    "axios": "^0.26.1",
+    "express": "^4.17.1",
+    "if-env": "^1.0.4"
   }
 }
