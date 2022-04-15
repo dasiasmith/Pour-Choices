@@ -9,7 +9,7 @@ import { useQuery } from "@apollo/client";
 import logo from "../assets/PCLogo.png";
 import Auth from "../utils/auth";
 import "../App";
-import RecipeBook from "../components/RecipeBook/RecipeBook";
+import RecipeBook from "./RecipeBook/RecipeBook";
 import Autocomplete from "../components/Homebar/Autocomplete";
 // import  Autocomplete  from '../components/Homebar/Autocomplete';
 // import { useQuery } from "@apollo/client";
