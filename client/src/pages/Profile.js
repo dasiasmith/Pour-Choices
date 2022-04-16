@@ -102,7 +102,7 @@ const Profile = () => {
         )}
       </header>
       {/* <Link to="/">Homepage</Link> */}
-      <div className="flex-container ml-auto">
+      <div className="flex-container mobile-flex-column">
         <div className="flex-row flex-child justify-center text-light">
           <h2 className="col-12 col-lg-10 text-light p-3 mb-0">
             <h3> Viewing {Auth.getProfile().data.username}'s recipes</h3>
@@ -118,12 +118,10 @@ const Profile = () => {
         </div>
 
         {!userParam && (
-          <div className="col-4">
-          <div
-            className="flex-child col-12 col-md-10 mb-3 p-3"
-          >
-            <RecipeForm />
-          </div>
+          <div className="">
+            <div className="flex-child">
+              <RecipeForm />
+            </div>
           </div>
         )}
       </div>

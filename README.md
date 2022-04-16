@@ -1,54 +1,55 @@
 # Pour Choices
-  ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-      https://opensource.org/licenses/MIT
 
-  ## Description
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+https://opensource.org/licenses/MIT
 
-  MERN stack single page application that allows users to generate a cocktail based on either the ingredient they have at home or whatever they're in the mood for while at a bar. 
-  Users are also given the ability to create their own drink recipe. This application combines a scalable MongoDB back end, a GraphQL API, Web API, and an Express.js and Node.js server with a React front end. 
+## Description
 
-  ## Table of Contents
+MERN stack single page application that allows users to generate a cocktail based on either the ingredient they have at home or whatever they're in the mood for while at a bar.
+Users are also given the ability to create their own drink recipe. This application combines a scalable MongoDB back end, a GraphQL API, Web API, and an Express.js and Node.js server with a React front end.
 
-  * [Installation](#installation)
+## Table of Contents
 
-  * [Usage](#usage)
+- [Installation](#installation)
 
-  * [License](#License)
+- [Usage](#usage)
 
-  * [Contributing](#contributing)
+- [License](#License)
 
-  * [Tests](#tests)
+- [Contributing](#contributing)
 
-  * [Questions](#Questions)
+- [Tests](#tests)
 
-  ## Installation
-  
-  To install necessary dependencies run the following command:
+- [Questions](#Questions)
 
-  ```
-  npm i
-  ```
+## Installation
 
-  ## Usage
+To install necessary dependencies run the following command:
 
-  Confirm all dependecies are installed in running locally and use command ```npm run develop``` to run.
+```
+npm i
+```
 
-  ## License
+## Usage
 
-  This project is licensed under the MIT license.
+Confirm all dependecies are installed in running locally and use command `npm run develop` to run.
 
-  ## Contributing
+## License
 
-  Please contact current repo contributors before contributing.
+This project is licensed under the MIT license.
 
-  ## Tests
+## Contributing
 
-  To run tests, run the following command:
+Please contact current repo contributors before contributing.
 
-  ```
-  npm test
-  ```
+## Tests
 
-  ## Questions
+To run tests, run the following command:
 
-  If you have any questions about the repo, open an issue or contact contributors directly.
+```
+npm test
+```
+
+## Questions
+
+If you have any questions about the repo, open an issue or contact contributors directly.
