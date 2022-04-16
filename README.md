@@ -41,6 +41,10 @@ The deployed application can be found [Here](https://dry-escarpment-27144.heroku
 ![away](/client/src/assets/away.png)
 ![profile](/client/src/assets/profile.png)
 
+The following images show the PWA application on desktop:<br>
+![signin](/client/src/assets/PourChoicesSignIn.png)
+![homepage](/client/src/assets/PourChoiceHomepage.png)
+
 ## License
 
 This project is licensed under the MIT license.
