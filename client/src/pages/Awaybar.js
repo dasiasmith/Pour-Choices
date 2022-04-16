@@ -11,6 +11,8 @@ import Auth from "../utils/auth";
 import "../App";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import Auto from "../components/AwayBar";
+
 const Awaybar = () => {
   const navigate = useNavigate();
   const { username: userParam } = useParams();
@@ -69,89 +71,36 @@ const Awaybar = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100vw",
-        minheight: "100vh",
+        height: "100vh",
       }}
     >
-      <main className="flex-column justify-center align-center">
-        <header className="text-light flex-column align-center mb-5 p-5">
+
+        <header className="text-light flex-column align-center mb-5 p-5 absolute">
           <div className="flex-row justify-center">
             <a href="/">
               <img src={logo} />
             </a>
           </div>
-          {Auth.loggedIn() ? (
+          {Auth.loggedIn() && (
             <div className="flex-row justify-space-between-lg justify-center align-center">
               <Link className="m-2 mx-5 decoration-none text-light" to="/me">
-                <h5>{Auth.getProfile().data.username}'s profile</h5>
+                <h4>{Auth.getProfile().data.username}'s profile</h4>
               </Link>
-              <h5
+              <h4
                 className="mx-5 decoration-none text-light"
                 style={{ cursor: "pointer" }}
                 onClick={logout}
               >
                 Logout
-              </h5>
-            </div>
-          ) : (
-            <div className="flex-row">
-              <Link className="m-2 decoration-none text-light" to="/login">
-                <h5>Login</h5>
-              </Link>
-              <Link className=" m-2 decoration-none text-light" to="/signup">
-                <h5>Signup</h5>
-              </Link>
+              </h4>
             </div>
           )}
         </header>
+        <main>
+        <Auto/>
         </main>
         </div>
     );
 };
 
 export default Awaybar;
-
-// import { useParams } from 'react-router-dom';
-// import { useQuery } from '@apollo/client';
-
-// export default function Awaybar(){
-//   function getRandomCocktail(){
-//       fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
-//       .then(
-//           function(response){
-//               if (response.status !== 200){
-//                   console.log('Problemo'+ response.status);
-//                   return;
-//               }
-//               response.json().then(function(data) {
-//                   // console.log(data);
-//                   displayRandomCocktail(data);
-//               });
-//           }
-//       )
-//       .catch(function(err) {
-//           console.log('Fetch Error :-5', err)
-//       })
-//   }
-//       function displayRandomCocktail(cocktail){
-//           console.log(cocktail.drinks[0].strDrink) //Gives just drink name
-
-//           let drinkSection = document.querySelector('#drink-section');
-//           let drinkName = document.createElement('h2');
-//           drinkName.innerHTML = cocktail.drinks[0].strDrink
-
-//           drinkSection.appendChild(drinkName)
-
-//           let img = document.createElement('img');
-//           img.src = cocktail.drinks[0].strDrinkThumb;
-
-//           drinkSection.appendChild(img);
-//       }
-
-//     return(
-//         <div>
-//             <button onClick={getRandomCocktail}>Click Me</button>
-//             <section style={{ color: "white" }} id="drink-section"></section>
-//         </div>
-
-//     )
-// }

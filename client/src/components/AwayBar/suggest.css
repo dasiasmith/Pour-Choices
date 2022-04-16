@@ -1,0 +1,11 @@
+
+.result-card {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 3px #ffffff63;
+    border: 1px #ffffff69 solid;
+    background-color: #ffffff3d ;
+    border-radius: 10px;
+    overflow:scroll;
+  }
+

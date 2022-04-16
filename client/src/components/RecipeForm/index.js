@@ -102,7 +102,7 @@ const RecipeForm = () => {
                 ></textarea>
               </div>
 
-              <div className="col-12 col-lg-6 align-center">
+              <div className="col-12 col-lg-11">
                 <button
                   className="btn btn-sm btn-dark py-3"
                   style={{ cursor: "pointer" }}

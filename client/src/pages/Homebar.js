@@ -4,15 +4,13 @@ import { Navigate, useParams } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME, QUERY_RECIPES } from "../utils/queries";
 import { LOGIN_USER } from "../utils/mutations";
-import homeBar from "../assets/homebar.png";
+import homebar from "../assets/homebar.png";
 import { useQuery } from "@apollo/client";
 import logo from "../assets/PCLogo.png";
 import Auth from "../utils/auth";
 import "../App";
 import Autocomplete from "../components/Homebar/Autocomplete";
 import { useLocation, useNavigate } from "react-router-dom";
-// import  Autocomplete  from '../components/Homebar/Autocomplete';
-// import { useQuery } from "@apollo/client";
 
 const Homebar = () => {
   const navigate = useNavigate();
@@ -37,7 +35,7 @@ const Homebar = () => {
       <div
         className="flex-column justify-flex-start"
         style={{
-          backgroundImage: `url(${homeBar})`,
+          backgroundImage: `url(${homebar})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
@@ -67,12 +65,13 @@ const Homebar = () => {
     <div
       className="flex-column justify-flex-start"
       style={{
-        backgroundImage: `url(${homeBar})`,
+        backgroundImage: `url(${homebar})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100vw",
-        minheight: "100vh",
+        height: "100vh",
+        overflowY: "scroll"
       }}
     >
       <main className="flex-column justify-center align-center">
@@ -82,27 +81,18 @@ const Homebar = () => {
               <img src={logo} />
             </a>
           </div>
-          {Auth.loggedIn() ? (
+          {Auth.loggedIn() && (
             <div className="flex-row justify-space-between-lg justify-center align-center">
               <Link className="m-2 mx-5 decoration-none text-light" to="/me">
-                <h5>{Auth.getProfile().data.username}'s profile</h5>
+                <h4>{Auth.getProfile().data.username}'s profile</h4>
               </Link>
-              <h5
+              <h4
                 className="mx-5 decoration-none text-light"
                 style={{ cursor: "pointer" }}
                 onClick={logout}
               >
                 Logout
-              </h5>
-            </div>
-          ) : (
-            <div className="flex-row">
-              <Link className="m-2 decoration-none text-light" to="/login">
-                <h5>Login</h5>
-              </Link>
-              <Link className=" m-2 decoration-none text-light" to="/signup">
-                <h5>Signup</h5>
-              </Link>
+              </h4>
             </div>
           )}
         </header>
@@ -113,14 +103,3 @@ const Homebar = () => {
 };
 
 export default Homebar;
-
-// HOMEBAR
-//       <main className="flex-row align-center min-100-vh">
-//       <header className="text-light">
-//         Select your ingredients
-//       </header> <br></br>
-//       <div className="center">
-//     <Autocomplete />
-//     </div>
-//     </main>
-//   </div>

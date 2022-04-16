@@ -57,7 +57,7 @@ const Signup = () => {
         </div>
           <div className="flex-row">
             <Link className="m-2 decoration-none text-light" to="/login">
-              <h5>Log in</h5>
+              <h4>Log in</h4>
             </Link>
           </div>
       </header>
@@ -65,12 +65,6 @@ const Signup = () => {
         <div className="card">
           <h1 className="card-header text-dark text-center">Sign Up</h1>
           <div className="card-body">
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
@@ -104,7 +98,6 @@ const Signup = () => {
                   Submit
                 </button>
               </form>
-            )}
 
             {error && (
               <div className="my-3 p-3 bg-danger text-white">

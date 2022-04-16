@@ -1,0 +1,24 @@
+.cocktail-card {
+    font-family: "Bebas Neue", cursive;
+    width: 200px;
+    box-shadow: 1px 1px 3px #ffffff63;
+    border: 1px #ffffff69 solid;
+    background-color: #ffffff3d ;
+    border-radius: 10px;
+    margin:5px;
+    padding:5px;
+    display: flex;
+    align-items: center;
+    justify-items:center;
+    flex-direction: column;
+}
+
+.ing-card {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    box-shadow: 1px 1px 3px #ffffff63;
+    border: 1px #ffffff69 solid;
+    background-color: #ffffff3d ;
+    border-radius: 10px;
+  }
