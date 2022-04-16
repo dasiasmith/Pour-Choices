@@ -33,7 +33,7 @@ npm i
 ## Usage
 
 Confirm all dependecies are installed in running locally and use command `npm run develop` to run.<br>
-The deployed application is : https://dry-escarpment-27144.herokuapp.com/ <br>
+The deployed application can be found [Here](https://dry-escarpment-27144.herokuapp.com/) <br>
 ![start](/client/src/assets/start.png)
 ![login](/client/src/assets/login.png)
 ![logout](/client/src/assets/logout.png)
