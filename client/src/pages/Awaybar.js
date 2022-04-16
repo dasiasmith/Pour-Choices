@@ -11,7 +11,7 @@ import Auth from "../utils/auth";
 import "../App";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import Auto from "../components/AwayBar"; // DS
+import Auto from "../components/AwayBar";
 
 const Awaybar = () => {
   const navigate = useNavigate();

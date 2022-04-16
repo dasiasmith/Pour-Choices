@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Auto2 } from "./categories";
 import { Auto1 } from "./ingredients";
-import randomDrink from "./randomCocktail";
+import RandomDrink from "./randomCocktail";
 import "./suggest.css";
 export default function Acomplete() {
   const [ingData, setingData] = useState([]);
@@ -18,7 +18,6 @@ export default function Acomplete() {
   function getidUrl(arr) {
     let idUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
     idUrl = idUrl + [arr];
-    console.log(idUrl);
 
     getCocktail(idUrl);
     function getCocktail(link) {
@@ -29,7 +28,6 @@ export default function Acomplete() {
             return;
           }
           response.json().then(function (data) {
-            console.log(data);
             displayCocktail(data);
           });
         })
@@ -38,35 +36,34 @@ export default function Acomplete() {
         });
     }
     function displayCocktail(cocktail) {
-      console.log(cocktail.drinks[0].strDrink); //Gives just drink name
-
-      let cocktailSection = document.querySelector("#cocktail-section"); // This is the same setup as the randomCocktail.js. Drinks are listed as list elements
+      let cocktailSection = document.querySelector("#cocktail-section"); 
       let cocktailName = document.createElement("h2");
-      cocktailName.innerHTML = cocktail.drinks[0].strDrink; // const name = cocktail.drinks[0].strDrink
+      cocktailName.innerHTML = cocktail.drinks[0].strDrink; 
 
-      cocktailSection.appendChild(cocktailName); // If you want to change the style just change the create element
+      cocktailSection.appendChild(cocktailName); 
 
       let img = document.createElement("img");
-      img.src = cocktail.drinks[0].strDrinkThumb; // drinkImg = cocktail.drink[0].strDrinkThumb
+      
+      img.src = cocktail.drinks[0].strDrinkThumb + '/preview';
+      img.setAttribute("id", "drinkimg")
 
       cocktailSection.appendChild(img);
 
       for (let i = 1; i < 16; i++) {
-        console.log(i);
         if (cocktail.drinks[0][`strIngredient${i}`] == null) {
           break;
         }
         let ingredient = document.createElement("li");
         ingredient.innerHTML =
-          cocktail.drinks[0][`strMeasure${i}`] + // const measurement = cocktail.drink[0][`strMeasure${i}`]
+          cocktail.drinks[0][`strMeasure${i}`] +
           ":" +
-          cocktail.drinks[0][`strIngredient${i}`]; // const ingredient = cocktail.drink[0][`strIngredient${i}`]
+          cocktail.drinks[0][`strIngredient${i}`];
 
         cocktailSection.appendChild(ingredient);
       }
 
       let drinkCard = document.createElement("li");
-      drinkCard.innerHTML = cocktail.drinks[0].strInstructions; // again, instructions might not be needed bc user is ordering not making
+      drinkCard.innerHTML = cocktail.drinks[0].strInstructions; 
 
       cocktailSection.appendChild(drinkCard);
     }
@@ -74,9 +71,9 @@ export default function Acomplete() {
 
   return (
     <div className="text-light container m-5">
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="m-5">
+      <div className="row">
+        <div className="col-lg-3">
+          <div className="m-5">
             <h1>
               Choose Your Base
               <Auto1 ingIds={ingData} setIngredientData={setingData} />
@@ -87,16 +84,16 @@ export default function Acomplete() {
             </h1>
           </div>
         </div>
-        <div class="col-lg-8">
-        <h1 className="flex-column">You should order:</h1>
-          <div class="result-card">
+        <div className="col-lg-8">
+        <h1 >You should order:</h1>
+          <div className="result-card">
             <section style={{
           height: '500px',
           overflow: 'auto',}} id="cocktail-section"></section>
           </div>
         </div>
       </div>
-      <randomDrink />
+      <RandomDrink/>
     </div>
   );
 }
