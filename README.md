@@ -33,7 +33,7 @@ npm i
 ## Usage
 
 Confirm all dependecies are installed in running locally and use command `npm run develop` to run.<br>
-The deployed application is : https://dry-escarpment-27144.herokuapp.com/ <br>
+The deployed application can be found [Here](https://dry-escarpment-27144.herokuapp.com/) <br><br>
 ![start](/client/src/assets/start.png)
 ![login](/client/src/assets/login.png)
 ![signup](/client/src/assets/signup.png)
@@ -41,6 +41,9 @@ The deployed application is : https://dry-escarpment-27144.herokuapp.com/ <br>
 ![away](/client/src/assets/away.png)
 ![profile](/client/src/assets/profile.png)
 ![pwa](/client/src/assets/pwa.png)
+
+The following image shows the PWA application on desktop:<br>
+![homepage](/client/src/assets/PourChoiceHomepage.png)
 
 ## License
 
