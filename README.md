@@ -6,7 +6,7 @@ https://opensource.org/licenses/MIT
 ## Description
 
 MERN stack single page application that allows users to generate a cocktail based on either the ingredient they have at home or whatever they're in the mood for while at a bar.
-Users are also given the ability to create their own drink recipe. This application combines a scalable MongoDB back end, a GraphQL API, Web API, and an Express.js and Node.js server with a React front end.
+Users are also given the ability to create their own drink recipe. This application combines a scalable MongoDB back end, a GraphQL API, Web API, and an Express.js and Node.js server with a React front end. This app also uses a service worker for offline functionality and is installable.
 
 ## Table of Contents
 
