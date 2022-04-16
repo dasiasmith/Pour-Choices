@@ -82,25 +82,25 @@ const RecipeList = ({
       {recipes &&
         recipes.map((recipe) => (
           <div key={recipe._id} className="card mb-3">
-            <h4 className="card-header text-dark p-2 m-0">
+            <h3 className="card-header text-dark p-2 m-0">
               {showUsername ? (
                 <Link
                   className="text-light"
                   to={`/profiles/${recipe.recipeAuthor}`}
                 >
                   {recipe.recipeAuthor} <br />
-                  <span style={{ fontSize: "1.25rem" }}>
+                  <span style={{ fontSize: "1.35rem" }}>
                     created this recipe on {recipe.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
-                  <span style={{ fontSize: "1.25rem" }}>
+                  <span style={{ fontSize: "1.35rem" }}>
                     created this recipe on {recipe.createdAt}
                   </span>
                 </>
               )}
-            </h4>
+            </h3>
             {isEdit === recipe._id ? (
               <RecipeEditForm recipeInfo={recipe} setIsEdit={setIsEdit} />
             ) : (

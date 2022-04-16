@@ -407,7 +407,7 @@ h6 {
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   margin: 0 0 1rem;
   line-height: 1.5;
 }
@@ -615,7 +615,7 @@ a:hover {
 }
 
 .ml-auto {
-  margin-left: auto !important;
+  margin-left: 5rem !important;
 }
 
 /* Margin - x axis */
@@ -1756,3 +1756,6 @@ label form [type="radio"] {
 /* .flex-child:first-child {
   margin-right: 20px;
 } */
+.absolute{
+   position: relative;
+ }

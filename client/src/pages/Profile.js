@@ -91,20 +91,20 @@ const Profile = () => {
         </div>
         {Auth.loggedIn() && (
           <div className="flex-row justify-center align-center">
-            <h5
+            <h4
               className="m-2 decoration-none text-light"
               style={{ cursor: "pointer" }}
               onClick={logout}
             >
               Log out
-            </h5>
+            </h4>
           </div>
         )}
       </header>
       {/* <Link to="/">Homepage</Link> */}
-      <div className="flex-container">
+      <div className="flex-container ml-auto">
         <div className="flex-row flex-child justify-center text-light">
-          <h2 className="col-12 col-md-10 text-light p-3 mb-0">
+          <h2 className="col-12 col-lg-10 text-light p-3 mb-0">
             <h3> Viewing {Auth.getProfile().data.username}'s recipes</h3>
           </h2>
           <div className="col-12 col-md-10">
@@ -117,26 +117,13 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* <div className="profile col-md-10">
-          <p>&#128516;</p>
-          <div class="card-body">
-            <p class="card-text">About Me</p>
-          </div>
-        </div>
-        <div className="user-recipe">recipe goes here</div> */}
-        {/* <div className="col-12 col-md-10 mb-5"></div>
         {!userParam && (
-          <div
-            className="col-12 col-md-10 mb-3 p-3"
-            style={{ border: "1px dotted #1a1a1a" }}
-          ></div>
-        )} */}
-        {!userParam && (
+          <div className="col-4">
           <div
             className="flex-child col-12 col-md-10 mb-3 p-3"
-            // style={{ border: "1px dotted #1a1a1a" }}
           >
             <RecipeForm />
+          </div>
           </div>
         )}
       </div>
