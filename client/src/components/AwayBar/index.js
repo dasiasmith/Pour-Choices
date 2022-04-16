@@ -36,16 +36,16 @@ export default function Acomplete() {
         });
     }
     function displayCocktail(cocktail) {
-      let cocktailSection = document.querySelector("#cocktail-section"); 
+      let cocktailSection = document.querySelector("#cocktail-section");
       let cocktailName = document.createElement("h2");
-      cocktailName.innerHTML = cocktail.drinks[0].strDrink; 
+      cocktailName.innerHTML = cocktail.drinks[0].strDrink;
 
-      cocktailSection.appendChild(cocktailName); 
+      cocktailSection.appendChild(cocktailName);
 
       let img = document.createElement("img");
-      
-      img.src = cocktail.drinks[0].strDrinkThumb + '/preview';
-      img.setAttribute("id", "drinkimg")
+
+      img.src = cocktail.drinks[0].strDrinkThumb + "/preview";
+      img.setAttribute("id", "drinkimg");
 
       cocktailSection.appendChild(img);
 
@@ -63,7 +63,7 @@ export default function Acomplete() {
       }
 
       let drinkCard = document.createElement("li");
-      drinkCard.innerHTML = cocktail.drinks[0].strInstructions; 
+      drinkCard.innerHTML = cocktail.drinks[0].strInstructions;
 
       cocktailSection.appendChild(drinkCard);
     }
@@ -74,26 +74,30 @@ export default function Acomplete() {
       <div className="row">
         <div className="col-lg-3">
           <div className="m-5">
-            <h1>
+            <h3>
               Choose Your Base
               <Auto1 ingIds={ingData} setIngredientData={setingData} />
-            </h1>
-            <h1>
+            </h3>
+            <h3>
               Choose a Category
               <Auto2 catIds={catData} setCategoryData={setcatData} />
-            </h1>
+            </h3>
           </div>
         </div>
         <div className="col-lg-8">
-        <h1 >You should order:</h1>
+          <h3>You should order:</h3>
           <div className="result-card">
-            <section style={{
-          height: '500px',
-          overflow: 'auto',}} id="cocktail-section"></section>
+            <section
+              style={{
+                height: "500px",
+                overflow: "auto",
+              }}
+              id="cocktail-section"
+            ></section>
           </div>
         </div>
       </div>
-      <RandomDrink/>
+      <RandomDrink />
     </div>
   );
 }
