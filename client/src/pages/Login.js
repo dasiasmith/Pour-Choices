@@ -68,18 +68,18 @@ const Login = (props) => {
           </div>
           {Auth.loggedIn() ? (
             <div className="flex-row justify-space-between-lg justify-center align-center">
-              <h5
+              <h4
                 className="m-2"
                 style={{ cursor: "pointer" }}
                 onClick={logout}
               >
                 Log out
-              </h5>
+              </h4>
             </div>
           ) : (
             <div className="flex-row">
               <Link className="m-2 decoration-none text-light" to="/signup">
-                <h5>Sign up</h5>
+                <h4>Sign up</h4>
               </Link>
             </div>
           )}
@@ -87,13 +87,7 @@ const Login = (props) => {
         <div className="col-12 col-lg-4">
           <div className="card">
             <h1 className="card-header text-dark text-center">Login</h1>
-            <div className="card-body">
-              {data ? (
-                <p>
-                  Success! You may now head{" "}
-                  <Link to="/">back to the homepage.</Link>
-                </p>
-              ) : (
+            <div className="card-body">(
                 <form onSubmit={handleFormSubmit}>
                   <input
                     className="form-input"
@@ -119,7 +113,6 @@ const Login = (props) => {
                     Submit
                   </button>
                 </form>
-              )}
 
               {error && (
                 <div className="my-3 p-3 bg-danger text-white">

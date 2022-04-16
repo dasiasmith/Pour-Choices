@@ -72,7 +72,9 @@ import React, { useEffect, useState, useRef } from "react";
           onChange={(event) => setSearch(event.target.value)}
         />
         {display && (
-          <div className="autoContainer">
+          <div className="autoContainer" style={{
+          height: '100px',
+          overflow: 'auto',}}>
             {options
               .filter((option) => option.indexOf(search) > -1)
               .map((value, i) => {

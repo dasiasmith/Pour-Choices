@@ -71,41 +71,33 @@ const Awaybar = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100vw",
-        minheight: "100vh",
+        height: "100vh",
       }}
     >
-      <main className="flex-column justify-center align-center">
-        <header className="text-light flex-column align-center mb-5 p-5">
+
+        <header className="text-light flex-column align-center mb-5 p-5 absolute">
           <div className="flex-row justify-center">
             <a href="/">
               <img src={logo} />
             </a>
           </div>
-          {Auth.loggedIn() ? (
+          {Auth.loggedIn() && (
             <div className="flex-row justify-space-between-lg justify-center align-center">
               <Link className="m-2 mx-5 decoration-none text-light" to="/me">
-                <h5>{Auth.getProfile().data.username}'s profile</h5>
+                <h4>{Auth.getProfile().data.username}'s profile</h4>
               </Link>
-              <h5
+              <h4
                 className="mx-5 decoration-none text-light"
                 style={{ cursor: "pointer" }}
                 onClick={logout}
               >
                 Logout
-              </h5>
-            </div>
-          ) : (
-            <div className="flex-row">
-              <Link className="m-2 decoration-none text-light" to="/login">
-                <h5>Login</h5>
-              </Link>
-              <Link className=" m-2 decoration-none text-light" to="/signup">
-                <h5>Signup</h5>
-              </Link>
+              </h4>
             </div>
           )}
-          <Auto/>
         </header>
+        <main>
+        <Auto/>
         </main>
         </div>
     );
