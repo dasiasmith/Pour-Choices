@@ -1745,6 +1745,14 @@ label form [type="radio"] {
   margin: 20px;
 }
 
+.border{
+  border: solid red 1px;
+}
+/* .cocktail-container{
+  display:flex;
+  flex-wrap: wrap;
+} */
+
 /* .flex-child:first-child {
   margin-right: 20px;
 } */

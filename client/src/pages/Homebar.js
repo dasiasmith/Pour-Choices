@@ -11,8 +11,6 @@ import Auth from "../utils/auth";
 import "../App";
 import Autocomplete from "../components/Homebar/Autocomplete";
 import { useLocation, useNavigate } from "react-router-dom";
-// import  Autocomplete  from '../components/Homebar/Autocomplete';
-// import { useQuery } from "@apollo/client";
 
 const Homebar = () => {
   const navigate = useNavigate();
@@ -72,7 +70,8 @@ const Homebar = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100vw",
-        minheight: "100vh",
+        height: "100vh",
+        overflowY: "scroll"
       }}
     >
       <main className="flex-column justify-center align-center">
@@ -113,14 +112,3 @@ const Homebar = () => {
 };
 
 export default Homebar;
-
-// HOMEBAR
-//       <main className="flex-row align-center min-100-vh">
-//       <header className="text-light">
-//         Select your ingredients
-//       </header> <br></br>
-//       <div className="center">
-//     <Autocomplete />
-//     </div>
-//     </main>
-//   </div>

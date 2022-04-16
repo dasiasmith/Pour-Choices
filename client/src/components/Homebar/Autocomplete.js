@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
-
+import Cocktail from "../Cocktail";
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
@@ -13,7 +13,7 @@ export default function CheckboxesTags() {
   const [list, setList] = useState([]);
   const [selected, setSelected] = useState([]);
   const [isFetched, setIsFetched] = useState(false);
-  const [singleDrink, setSingleDrink] = useState([])
+  const [singleDrink, setSingleDrink] = useState([]);
 
   //get list of ingredients for the user
   useEffect(() => {
@@ -54,26 +54,27 @@ export default function CheckboxesTags() {
     )
       .then((res) => res.json())
       .then((data) => {
-        setIsFetched(true)
+        setIsFetched(true);
         let newData3 = data.drinks[0];
         // setSingleDrink(newData3)
         console.log(newData3);
-        let ing = []
-        let mea = []
-        for(let i = 1 ; i < 15; i++) {
-          console.log(newData3[`strIngredient${i}`])
-          newData3[`strIngredient${i}`] && ing.push(newData3[`strIngredient${i}`])
-          newData3[`strIngredient${i}`] && mea.push(newData3[`strMeasure${i}`])
+        let ing = [];
+        let mea = [];
+        for (let i = 1; i < 15; i++) {
+          console.log(newData3[`strIngredient${i}`]);
+          newData3[`strIngredient${i}`] &&
+            ing.push(newData3[`strIngredient${i}`]);
+          newData3[`strIngredient${i}`] && mea.push(newData3[`strMeasure${i}`]);
         }
-        newData3.ingredients = ing
-        newData3.measurements = mea
-        setSingleDrink(newData3)
-        console.log(ing)
-        console.log(mea)
-        console.log(singleDrink, "sin")
+        newData3.ingredients = ing;
+        newData3.measurements = mea;
+        setSingleDrink(newData3);
+        console.log(ing);
+        console.log(mea);
+        console.log(singleDrink, "sin");
       });
   };
-// renders the checkbox and its items
+  // renders the checkbox and its items
   return (
     <>
       <Autocomplete
@@ -85,9 +86,9 @@ export default function CheckboxesTags() {
           setSelected(newValue);
         }}
         onClose={(e) => {
-           // fetchList();
-           if(selected.length) fetchList()
-           // alert("fetch me the stuff")
+          // fetchList();
+          if (selected.length) fetchList();
+          // alert("fetch me the stuff")
         }}
         disableCloseOnSelect
         getOptionLabel={(option) => option.title}
@@ -102,49 +103,44 @@ export default function CheckboxesTags() {
             {option.title}
           </li>
         )}
-        style={{ width: 500, background: 'white' }}
+        style={{ width: 500, background: "white", margin: 30}}
         renderInput={(params) => (
-          <TextField {...params} label="Checkboxes" placeholder="Favorites" />
+          <TextField {...params} label="" placeholder="Ingredients" />
         )}
       />
       {/* populates the drinks options and their images */}
-      <div className="row">
-        {list.length > 0 ? (
-          list.map((e) => (
-            <div key={e.idDrink} style={{ cursor: 'pointer'}}>
-              <p style={{color: 'white'}}> {e.strDrink} </p>
-                <img
-                  src={e.strDrinkThumb}
-                  onClick={() => fetchRecipe(e.idDrink)}
-                  alt="alt"
-                  width="40px"
-                  height="40px"
-                />
-             
+      <div className="row w-100"> 
+        <div className="col-9 flex-row justify-center">
+          {list.length > 0
+            ? list.map((e) => (
+                <Cocktail cocktail={e} fetchRecipe={fetchRecipe} />
+              ))
+            : // returns no data if the user selected ingredients that can't generate a cocktail
+              null}
+          {selected.length && !list.length ? (
+            <div>
+              <p style={{ color: "white" }}></p>
             </div>
-          ))
-          // returns no data if the user selected ingredients that can't generate a cocktail
-        ) : null}
-        {selected.length && !list.length ? (
-          <div>
-            <p style={{ color: "white" }}>no data</p>
-          </div>
-        ) : null
-          }
+          ) : null}
           {/* renders the recipe and the ingredients for the cocktail */}
+        </div>
+        {isFetched && (
+          <div className="col-3 mt-2 ing-card" style={{ color: "white" }}>
+            <h2>Ingredients</h2>
+
+            <ul>
+              {singleDrink.ingredients?.map((item, index) => (
+                <li key={index}>
+                  {item} : {singleDrink.measurements[index]}
+                </li>
+              ))}
+            </ul>
+            <p>
+              <b>Instructions:</b> {singleDrink.strInstructions}
+            </p>
+          </div>
+        )}
       </div>
-      {
-        isFetched && <div style={{color: 'white'}}>
-        <h2>Ingredients</h2>
-      
-        <ul>
-          {singleDrink.ingredients?.map((item, index) => (
-            <li key={index}>{item} : {singleDrink.measurements[index]}</li>
-          ))}
-        </ul>
-        <p><b>Instructions:</b> { singleDrink.strInstructions }</p>
-      </div>
-      } 
     </>
   );
 }
