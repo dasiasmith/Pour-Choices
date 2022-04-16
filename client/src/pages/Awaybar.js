@@ -41,7 +41,6 @@ const Awaybar = () => {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           width: "100vw",
-          height: "100vh"
         }}
       >
         <main className="flex-row justify-center align-center min-100-vh">
@@ -71,36 +70,34 @@ const Awaybar = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100vw",
-        height: "100vh",
       }}
     >
-
-        <header className="text-light flex-column align-center mb-5 p-5 absolute">
-          <div className="flex-row justify-center">
-            <a href="/">
-              <img src={logo} />
-            </a>
-          </div>
-          {Auth.loggedIn() && (
-            <div className="flex-row justify-space-between-lg justify-center align-center">
-              <Link className="m-2 mx-5 decoration-none text-light" to="/me">
-                <h4>{Auth.getProfile().data.username}'s profile</h4>
-              </Link>
-              <h4
-                className="mx-5 decoration-none text-light"
-                style={{ cursor: "pointer" }}
-                onClick={logout}
-              >
-                Logout
-              </h4>
-            </div>
-          )}
-        </header>
-        <main>
-        <Auto/>
-        </main>
+      <header className="text-light flex-column align-center mb-5 p-5 absolute">
+        <div className="flex-row justify-center">
+          <a href="/">
+            <img src={logo} />
+          </a>
         </div>
-    );
+        {Auth.loggedIn() && (
+          <div className="flex-row justify-space-between-lg justify-center align-center">
+            <Link className="m-2 mx-5 decoration-none text-light" to="/me">
+              <h4>{Auth.getProfile().data.username}'s profile</h4>
+            </Link>
+            <h4
+              className="mx-5 decoration-none text-light"
+              style={{ cursor: "pointer" }}
+              onClick={logout}
+            >
+              Logout
+            </h4>
+          </div>
+        )}
+      </header>
+      <main>
+        <Auto />
+      </main>
+    </div>
+  );
 };
 
 export default Awaybar;
