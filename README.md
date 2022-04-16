@@ -36,10 +36,11 @@ Confirm all dependecies are installed in running locally and use command `npm ru
 The deployed application is : https://dry-escarpment-27144.herokuapp.com/ <br>
 ![start](/client/src/assets/start.png)
 ![login](/client/src/assets/login.png)
-![logout](/client/src/assets/logout.png)
+![signup](/client/src/assets/signup.png)
 ![home](/client/src/assets/home.png)
 ![away](/client/src/assets/away.png)
 ![profile](/client/src/assets/profile.png)
+![pwa](/client/src/assets/pwa.png)
 
 ## License
 
